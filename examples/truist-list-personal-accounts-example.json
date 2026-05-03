@@ -1,0 +1,41 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.truist.com/v1/personal/accounts",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "accounts": [
+        {
+          "accountId": "acct_1a2b3c4d5e6f",
+          "accountNumber": "****1234",
+          "accountType": "CHECKING",
+          "accountName": "Truist One Checking",
+          "routingNumber": "053101121",
+          "status": "ACTIVE",
+          "currency": "USD",
+          "openedDate": "2022-04-15"
+        },
+        {
+          "accountId": "acct_7g8h9i0j1k2l",
+          "accountNumber": "****5678",
+          "accountType": "SAVINGS",
+          "accountName": "Truist One Savings",
+          "routingNumber": "053101121",
+          "status": "ACTIVE",
+          "currency": "USD",
+          "openedDate": "2022-04-15"
+        }
+      ],
+      "totalCount": 2
+    }
+  }
+}

@@ -1,0 +1,213 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Truist Commercial Accounts API"
+  description: "Provides access to commercial deposit account details, balances, and account summaries for corporate clients."
+  tags:
+    - Banking
+    - Commercial Banking
+    - Accounts
+    - Treasury
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TRUIST_COMMERCIAL_OAUTH2_TOKEN: TRUIST_COMMERCIAL_OAUTH2_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: truist-commercial-accounts
+      baseUri: https://api.truist.com/v1
+      description: "Commercial banking account information API."
+      authentication:
+        type: bearer
+        token: "{{TRUIST_COMMERCIAL_OAUTH2_TOKEN}}"
+      resources:
+        - name: commercial-accounts
+          path: /commercial/accounts
+          description: "Commercial deposit accounts"
+          operations:
+            - name: list-commercial-accounts
+              method: GET
+              description: "Retrieve a list of commercial deposit accounts for the authenticated organization."
+              inputParameters:
+                - name: customerId
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter accounts by customer/organization identifier"
+                - name: accountType
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by account type"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: commercial-account
+          path: /commercial/accounts/{accountId}
+          description: "Individual commercial account details"
+          operations:
+            - name: get-commercial-account
+              method: GET
+              description: "Retrieve details for a specific commercial deposit account."
+              inputParameters:
+                - name: accountId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Unique account identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: commercial-account-balances
+          path: /commercial/accounts/{accountId}/balances
+          description: "Commercial account balance data"
+          operations:
+            - name: get-commercial-account-balances
+              method: GET
+              description: "Retrieve current and available balances for a commercial deposit account."
+              inputParameters:
+                - name: accountId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Unique account identifier"
+                - name: asOfDate
+                  in: query
+                  type: string
+                  required: false
+                  description: "Balance as of date (YYYY-MM-DD)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: commercial-account-summary
+          path: /commercial/accounts/summary
+          description: "Consolidated commercial account summary"
+          operations:
+            - name: get-commercial-account-summary
+              method: GET
+              description: "Retrieve a consolidated balance summary across all commercial accounts."
+              inputParameters:
+                - name: customerId
+                  in: query
+                  type: string
+                  required: false
+                  description: "Customer/organization identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8102
+      namespace: truist-commercial-accounts-api
+      resources:
+        - path: /v1/commercial/accounts
+          name: commercial-accounts
+          description: "List commercial accounts"
+          operations:
+            - method: GET
+              name: list-commercial-accounts
+              description: "List commercial deposit accounts"
+              call: "truist-commercial-accounts.list-commercial-accounts"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/commercial/accounts/{accountId}
+          name: commercial-account
+          description: "Get a specific commercial account"
+          operations:
+            - method: GET
+              name: get-commercial-account
+              description: "Get commercial account details"
+              call: "truist-commercial-accounts.get-commercial-account"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/commercial/accounts/{accountId}/balances
+          name: commercial-account-balances
+          description: "Get commercial account balances"
+          operations:
+            - method: GET
+              name: get-commercial-account-balances
+              description: "Get commercial account balances"
+              call: "truist-commercial-accounts.get-commercial-account-balances"
+              with:
+                accountId: "rest.accountId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/commercial/accounts/summary
+          name: commercial-account-summary
+          description: "Get commercial account summary"
+          operations:
+            - method: GET
+              name: get-commercial-account-summary
+              description: "Get consolidated balance summary"
+              call: "truist-commercial-accounts.get-commercial-account-summary"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9102
+      namespace: truist-commercial-accounts-mcp
+      transport: http
+      tools:
+        - name: list-commercial-accounts
+          description: "List commercial deposit accounts for the organization."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "truist-commercial-accounts.list-commercial-accounts"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-commercial-account
+          description: "Get details for a specific commercial deposit account."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "truist-commercial-accounts.get-commercial-account"
+          with:
+            accountId: "tools.accountId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-commercial-account-balances
+          description: "Get current and available balances for a commercial deposit account, including collected and float balances."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "truist-commercial-accounts.get-commercial-account-balances"
+          with:
+            accountId: "tools.accountId"
+            asOfDate: "tools.asOfDate"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-commercial-account-summary
+          description: "Get a consolidated balance summary across all commercial accounts for the organization."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "truist-commercial-accounts.get-commercial-account-summary"
+          with:
+            customerId: "tools.customerId"
+          outputParameters:
+            - type: object
+              mapping: "$."

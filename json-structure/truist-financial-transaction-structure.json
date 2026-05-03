@@ -1,0 +1,99 @@
+{
+  "name": "Truist Transaction",
+  "description": "Structure documentation for Truist banking transaction objects.",
+  "fields": [
+    {
+      "name": "transactionId",
+      "type": "string",
+      "required": true,
+      "description": "Unique transaction identifier."
+    },
+    {
+      "name": "accountId",
+      "type": "string",
+      "required": true,
+      "description": "Associated account identifier."
+    },
+    {
+      "name": "transactionDate",
+      "type": "date",
+      "required": true,
+      "description": "Transaction value date (YYYY-MM-DD)."
+    },
+    {
+      "name": "postedDate",
+      "type": "date",
+      "required": false,
+      "description": "Date transaction was posted to account."
+    },
+    {
+      "name": "amount",
+      "type": "number",
+      "required": true,
+      "description": "Transaction amount. Negative for debits, positive for credits."
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "required": true,
+      "default": "USD",
+      "description": "ISO 4217 currency code."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "required": true,
+      "enum": ["POSTED", "PENDING"],
+      "description": "Transaction processing status."
+    },
+    {
+      "name": "transactionType",
+      "type": "string",
+      "required": true,
+      "enum": ["DEBIT", "CREDIT", "FEE", "INTEREST", "TRANSFER", "ACH", "WIRE", "CHECK", "BOOK_TRANSFER"],
+      "description": "Payment type or transaction category."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Transaction narrative description."
+    },
+    {
+      "name": "merchantName",
+      "type": "string",
+      "required": false,
+      "description": "Merchant name for POS transactions."
+    },
+    {
+      "name": "category",
+      "type": "string",
+      "required": false,
+      "description": "Personal finance management category."
+    },
+    {
+      "name": "checkNumber",
+      "type": "string",
+      "required": false,
+      "description": "Check number (check transactions)."
+    },
+    {
+      "name": "achTraceNumber",
+      "type": "string",
+      "required": false,
+      "description": "ACH trace number (ACH transactions)."
+    },
+    {
+      "name": "wireReferenceNumber",
+      "type": "string",
+      "required": false,
+      "description": "Wire transfer federal reference number."
+    },
+    {
+      "name": "runningBalance",
+      "type": "number",
+      "required": false,
+      "description": "Account balance after this transaction."
+    }
+  ]
+}

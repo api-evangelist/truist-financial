@@ -1,0 +1,63 @@
+{
+  "name": "Truist Account",
+  "description": "Structure documentation for Truist deposit account objects.",
+  "fields": [
+    {
+      "name": "accountId",
+      "type": "string",
+      "required": true,
+      "description": "Unique account identifier assigned by Truist."
+    },
+    {
+      "name": "accountNumber",
+      "type": "string",
+      "required": false,
+      "description": "Masked account number showing last 4 digits."
+    },
+    {
+      "name": "accountType",
+      "type": "string",
+      "required": true,
+      "enum": ["CHECKING", "SAVINGS", "MONEY_MARKET", "CERTIFICATE_OF_DEPOSIT", "SWEEP"],
+      "description": "Type of deposit account."
+    },
+    {
+      "name": "accountName",
+      "type": "string",
+      "required": false,
+      "description": "Account nickname or display name."
+    },
+    {
+      "name": "routingNumber",
+      "type": "string",
+      "required": false,
+      "description": "ABA routing/transit number."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "required": true,
+      "enum": ["ACTIVE", "INACTIVE", "CLOSED"],
+      "description": "Current account status."
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "required": true,
+      "default": "USD",
+      "description": "ISO 4217 currency code."
+    },
+    {
+      "name": "openedDate",
+      "type": "date",
+      "required": false,
+      "description": "Date the account was opened (YYYY-MM-DD)."
+    },
+    {
+      "name": "customerId",
+      "type": "string",
+      "required": false,
+      "description": "Customer or organization identifier (commercial accounts)."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/truist-financial/main/json-schema/truist-financial-account-schema.json",
+  "title": "Truist Account",
+  "description": "Represents a Truist deposit account for personal, small business, or commercial banking.",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "description": "Unique account identifier assigned by Truist."
+    },
+    "accountNumber": {
+      "type": "string",
+      "description": "Masked account number (last 4 digits visible)."
+    },
+    "accountType": {
+      "type": "string",
+      "enum": ["CHECKING", "SAVINGS", "MONEY_MARKET", "CERTIFICATE_OF_DEPOSIT", "SWEEP"],
+      "description": "Type of deposit account."
+    },
+    "accountName": {
+      "type": "string",
+      "description": "Account nickname or display name."
+    },
+    "routingNumber": {
+      "type": "string",
+      "description": "ABA routing/transit number for the account."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "INACTIVE", "CLOSED"],
+      "description": "Current operational status of the account."
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD",
+      "description": "ISO 4217 currency code for the account."
+    },
+    "openedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the account was opened."
+    },
+    "customerId": {
+      "type": "string",
+      "description": "Associated customer or organization identifier (commercial accounts)."
+    }
+  },
+  "required": ["accountId", "accountType", "status", "currency"]
+}

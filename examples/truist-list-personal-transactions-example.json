@@ -1,0 +1,53 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.truist.com/v1/personal/accounts/acct_1a2b3c4d5e6f/transactions?fromDate=2026-04-01&toDate=2026-04-30&status=POSTED&limit=50",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "transactions": [
+        {
+          "transactionId": "txn_abc123def456",
+          "accountId": "acct_1a2b3c4d5e6f",
+          "transactionDate": "2026-04-28",
+          "postedDate": "2026-04-29",
+          "amount": -52.30,
+          "currency": "USD",
+          "status": "POSTED",
+          "transactionType": "DEBIT",
+          "description": "GROCERY PURCHASE",
+          "merchantName": "Harris Teeter #1234",
+          "merchantCategory": "Grocery Stores",
+          "category": "Groceries",
+          "runningBalance": 4250.75
+        },
+        {
+          "transactionId": "txn_xyz789ghi012",
+          "accountId": "acct_1a2b3c4d5e6f",
+          "transactionDate": "2026-04-25",
+          "postedDate": "2026-04-26",
+          "amount": 3500.00,
+          "currency": "USD",
+          "status": "POSTED",
+          "transactionType": "CREDIT",
+          "description": "DIRECT DEPOSIT PAYROLL",
+          "merchantName": null,
+          "merchantCategory": null,
+          "category": "Income",
+          "runningBalance": 4303.05
+        }
+      ],
+      "totalCount": 24,
+      "pageSize": 50,
+      "offset": 0
+    }
+  }
+}

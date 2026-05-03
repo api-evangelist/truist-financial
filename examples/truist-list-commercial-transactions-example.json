@@ -1,0 +1,55 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.truist.com/v1/commercial/accounts/comm_acct_AA11BB22/transactions?fromDate=2026-04-01&toDate=2026-04-30&transactionType=ACH",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "transactions": [
+        {
+          "transactionId": "comm_txn_TT55UU66",
+          "accountId": "comm_acct_AA11BB22",
+          "transactionDate": "2026-04-30",
+          "postedDate": "2026-04-30",
+          "amount": -125000.00,
+          "currency": "USD",
+          "debitCreditIndicator": "DEBIT",
+          "transactionType": "ACH",
+          "bankReferenceNumber": "ACH20260430001",
+          "customerReferenceNumber": "PAYROLL-APR-2026",
+          "description": "ACH PAYROLL DISBURSEMENT",
+          "receiverName": "EMPLOYEE PAYROLL ACCOUNT",
+          "achTraceNumber": "053101121260430001",
+          "runningBalance": 2150000.00
+        },
+        {
+          "transactionId": "comm_txn_VV77WW88",
+          "accountId": "comm_acct_AA11BB22",
+          "transactionDate": "2026-04-29",
+          "postedDate": "2026-04-29",
+          "amount": 350000.00,
+          "currency": "USD",
+          "debitCreditIndicator": "CREDIT",
+          "transactionType": "WIRE",
+          "bankReferenceNumber": "WIRE20260429002",
+          "customerReferenceNumber": "INVOICE-2026-0412",
+          "description": "INCOMING WIRE TRANSFER",
+          "originatorName": "ACME CORPORATION",
+          "wireReferenceNumber": "FW2026042900123",
+          "runningBalance": 2275000.00
+        }
+      ],
+      "totalCount": 12,
+      "pageSize": 100,
+      "offset": 0
+    }
+  }
+}

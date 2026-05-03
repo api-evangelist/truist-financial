@@ -1,0 +1,127 @@
+extends: spectral:oas
+rules:
+  truist-operation-ids-camel-case:
+    description: Truist operation IDs must use camelCase format.
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  truist-path-segments-kebab-case:
+    description: Truist URL path segments must use kebab-case (lowercase with hyphens).
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9{}-]+)*$"
+
+  truist-versioned-paths:
+    description: Truist paths should NOT include version in the path (versioning is handled at server level).
+    severity: info
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        notMatch: "^/v[0-9]"
+
+  truist-personal-or-commercial-prefix:
+    description: Truist paths must start with /personal or /commercial to indicate product line.
+    severity: error
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^/(personal|commercial)"
+
+  truist-oauth2-security:
+    description: All Truist API operations must require OAuth2 security.
+    severity: error
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: security
+      function: truthy
+
+  truist-response-200-json:
+    description: Truist 200 responses must include application/json content type.
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete].responses.200"
+    then:
+      field: content.application/json
+      function: truthy
+
+  truist-operations-have-tags:
+    description: All Truist operations must have at least one tag for categorization.
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  truist-amount-fields-double:
+    description: Amount/balance fields in Truist schemas must use number type with double format.
+    severity: warn
+    given: "$.components.schemas.*.properties[*Balance,*Amount,amount,balance]"
+    then:
+      field: format
+      function: enumeration
+      functionOptions:
+        values:
+          - double
+          - float
+
+  truist-account-id-string:
+    description: Account and transaction identifiers must be string type.
+    severity: warn
+    given: "$.components.schemas.*.properties[accountId,transactionId,customerId]"
+    then:
+      field: type
+      function: enumeration
+      functionOptions:
+        values:
+          - string
+
+  truist-date-format:
+    description: Date fields in Truist schemas must use date or date-time format.
+    severity: warn
+    given: "$.components.schemas.*.properties[*Date,*DateTime]"
+    then:
+      field: format
+      function: enumeration
+      functionOptions:
+        values:
+          - date
+          - date-time
+
+  truist-currency-default-usd:
+    description: Currency fields in Truist schemas should default to USD.
+    severity: info
+    given: "$.components.schemas.*.properties.currency"
+    then:
+      field: default
+      function: enumeration
+      functionOptions:
+        values:
+          - USD
+
+  truist-pagination-params:
+    description: Collection endpoints must support limit and offset pagination parameters.
+    severity: warn
+    given: "$.paths.*[get]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          properties:
+            parameters:
+              type: array
+              contains:
+                properties:
+                  name:
+                    enum: [limit, offset]

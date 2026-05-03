@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.truist.com/v1/personal/accounts/acct_1a2b3c4d5e6f/balances",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "accountId": "acct_1a2b3c4d5e6f",
+      "currentBalance": 4250.75,
+      "availableBalance": 3975.00,
+      "pendingBalance": -275.75,
+      "currency": "USD",
+      "asOfDateTime": "2026-05-03T14:30:00Z"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/truist-financial/main/json-schema/truist-financial-transaction-schema.json",
+  "title": "Truist Transaction",
+  "description": "Represents a banking transaction on a Truist personal, small business, or commercial account.",
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "type": "string",
+      "description": "Unique transaction identifier."
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Identifier of the associated account."
+    },
+    "transactionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the transaction was initiated or value-dated."
+    },
+    "postedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the transaction was posted to the account."
+    },
+    "amount": {
+      "type": "number",
+      "format": "double",
+      "description": "Transaction amount. Negative for debits, positive for credits."
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD",
+      "description": "ISO 4217 currency code."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["POSTED", "PENDING"],
+      "description": "Current processing status."
+    },
+    "transactionType": {
+      "type": "string",
+      "enum": ["DEBIT", "CREDIT", "FEE", "INTEREST", "TRANSFER", "ACH", "WIRE", "CHECK", "BOOK_TRANSFER"],
+      "description": "Category/type of transaction."
+    },
+    "debitCreditIndicator": {
+      "type": "string",
+      "enum": ["DEBIT", "CREDIT"],
+      "description": "Indicates whether the transaction is a debit or credit."
+    },
+    "description": {
+      "type": "string",
+      "description": "Transaction narrative or description."
+    },
+    "merchantName": {
+      "type": ["string", "null"],
+      "description": "Name of the merchant for point-of-sale transactions."
+    },
+    "merchantCategory": {
+      "type": ["string", "null"],
+      "description": "Merchant category code description."
+    },
+    "category": {
+      "type": ["string", "null"],
+      "description": "Personal finance management category."
+    },
+    "bankReferenceNumber": {
+      "type": ["string", "null"],
+      "description": "Bank-assigned reference number."
+    },
+    "customerReferenceNumber": {
+      "type": ["string", "null"],
+      "description": "Customer-provided reference number."
+    },
+    "checkNumber": {
+      "type": ["string", "null"],
+      "description": "Check number for check transactions."
+    },
+    "achTraceNumber": {
+      "type": ["string", "null"],
+      "description": "ACH trace number for ACH transactions."
+    },
+    "wireReferenceNumber": {
+      "type": ["string", "null"],
+      "description": "Federal reference number for wire transfers."
+    },
+    "originatorName": {
+      "type": ["string", "null"],
+      "description": "Name of the originating party for ACH/wire transactions."
+    },
+    "receiverName": {
+      "type": ["string", "null"],
+      "description": "Name of the receiving party."
+    },
+    "runningBalance": {
+      "type": ["number", "null"],
+      "format": "double",
+      "description": "Account ledger balance after this transaction."
+    }
+  },
+  "required": ["transactionId", "accountId", "transactionDate", "amount", "currency", "status", "transactionType"]
+}

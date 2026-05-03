@@ -1,0 +1,187 @@
+vocabulary:
+  name: Truist Financial Vocabulary
+  description: >-
+    Domain vocabulary and terminology for Truist Financial APIs, covering personal
+    banking, small business banking, commercial banking, treasury management, and
+    open banking concepts.
+  version: "1.0.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+terms:
+  - term: Account
+    definition: >-
+      A deposit product held by a Truist client, including checking, savings,
+      money market, certificates of deposit, and sweep accounts.
+    tags:
+      - Accounts
+      - Banking
+
+  - term: Available Balance
+    definition: >-
+      The portion of an account's current balance that is accessible for immediate
+      transactions, after accounting for pending debits and holds.
+    tags:
+      - Accounts
+      - Balances
+      - Banking
+
+  - term: Collected Balance
+    definition: >-
+      The portion of a commercial account's ledger balance that has cleared and
+      is available for investment or disbursement, excluding uncollected float.
+    tags:
+      - Commercial Banking
+      - Balances
+      - Treasury
+
+  - term: Ledger Balance
+    definition: >-
+      The total accounting balance of an account at the close of business, including
+      all posted transactions regardless of collection status.
+    tags:
+      - Commercial Banking
+      - Balances
+      - Treasury
+
+  - term: Float
+    definition: >-
+      The difference between the ledger balance and collected balance, representing
+      checks or deposits that have been posted but not yet cleared through the
+      banking system.
+    tags:
+      - Commercial Banking
+      - Treasury
+
+  - term: ACH
+    definition: >-
+      Automated Clearing House — an electronic network for financial transactions
+      in the United States. Truist supports ACH credits (deposits) and ACH debits
+      (withdrawals) for both business and consumer accounts.
+    tags:
+      - Payments
+      - ACH
+      - Banking
+
+  - term: Wire Transfer
+    definition: >-
+      An electronic funds transfer processed through the Federal Reserve's Fedwire
+      system or CHIPS network. Truist supports same-day domestic and international
+      wire transfers for commercial clients.
+    tags:
+      - Payments
+      - Wire Transfer
+      - Banking
+
+  - term: Book Transfer
+    definition: >-
+      An internal transfer between two accounts both held at Truist, processed
+      instantaneously without clearing through external networks.
+    tags:
+      - Payments
+      - Commercial Banking
+
+  - term: Routing Number
+    definition: >-
+      Truist Bank's ABA (American Bankers Association) routing/transit number
+      (053101121) used to identify the financial institution in ACH and wire
+      transactions.
+    tags:
+      - Banking
+      - ACH
+
+  - term: Open Banking
+    definition: >-
+      A framework enabling third-party fintech applications to access Truist client
+      financial data with client consent, using tokenized API access aligned with
+      the Financial Data Exchange (FDX) standard. Truist launched open banking
+      in February 2026.
+    tags:
+      - Open Banking
+      - FDX
+      - Banking
+
+  - term: FDX
+    definition: >-
+      Financial Data Exchange — an industry standard for secure, consumer-permissioned
+      financial data sharing. Truist's open banking APIs are aligned with FDX
+      standards, enabling interoperability with aggregators like Plaid and Mastercard
+      open finance.
+    tags:
+      - Open Banking
+      - Standards
+      - Banking
+
+  - term: OAuth 2.0
+    definition: >-
+      The authorization framework used by Truist APIs. Personal banking APIs use
+      Authorization Code flow for consumer-permissioned access. Commercial banking
+      APIs use Client Credentials flow for server-to-server integrations.
+    tags:
+      - Authentication
+      - Security
+      - Banking
+
+  - term: Treasury Management
+    definition: >-
+      Commercial banking services for managing corporate liquidity, including balance
+      reporting, cash positioning, disbursements (ACH, wire), collections, and
+      account reconciliation. Truist's commercial APIs support treasury management
+      platform integrations.
+    tags:
+      - Commercial Banking
+      - Treasury
+      - Payments
+
+  - term: ACH Trace Number
+    definition: >-
+      A 15-digit number assigned by Truist to uniquely identify an ACH transaction
+      within the banking network, used for tracking and reconciliation.
+    tags:
+      - ACH
+      - Payments
+      - Banking
+
+  - term: Pending Transaction
+    definition: >-
+      A transaction that has been authorized or initiated but has not yet been
+      fully processed and posted to the account ledger balance.
+    tags:
+      - Transactions
+      - Banking
+
+  - term: Posted Transaction
+    definition: >-
+      A transaction that has been fully processed and applied to the account's
+      ledger balance, creating a permanent record in the transaction history.
+    tags:
+      - Transactions
+      - Banking
+
+  - term: Commercial Accounts API
+    definition: >-
+      Truist's API providing programmatic access to commercial deposit account
+      information, balances, and summary data for corporate and institutional clients.
+    tags:
+      - Commercial Banking
+      - Accounts
+      - API
+
+  - term: Personal Banking API
+    definition: >-
+      Truist's APIs for consumer and small business account access, including
+      account details, balances, and transaction history with OAuth 2.0 consent.
+    tags:
+      - Personal Banking
+      - Small Business
+      - API
+
+  - term: Association Services
+    definition: >-
+      Specialized banking services tailored for trade associations, homeowners
+      associations, and membership organizations, including dues collection and
+      member payment processing.
+    tags:
+      - Association Services
+      - Banking
+      - Payments

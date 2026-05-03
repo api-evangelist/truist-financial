@@ -1,0 +1,111 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/FND/",
+    "truist": "https://developer.truist.com/vocabulary/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Account": "schema:BankAccount",
+    "accountId": "schema:identifier",
+    "accountNumber": {
+      "@id": "schema:accountId",
+      "@type": "xsd:string"
+    },
+    "accountType": {
+      "@id": "truist:accountType",
+      "@type": "xsd:string"
+    },
+    "accountName": "schema:name",
+    "routingNumber": {
+      "@id": "truist:routingNumber",
+      "@type": "xsd:string"
+    },
+    "status": "schema:status",
+    "currency": {
+      "@id": "schema:currency",
+      "@type": "xsd:string"
+    },
+    "openedDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "customerId": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+
+    "AccountBalances": "truist:AccountBalances",
+    "currentBalance": {
+      "@id": "schema:balance",
+      "@type": "xsd:decimal"
+    },
+    "availableBalance": {
+      "@id": "truist:availableBalance",
+      "@type": "xsd:decimal"
+    },
+    "ledgerBalance": {
+      "@id": "truist:ledgerBalance",
+      "@type": "xsd:decimal"
+    },
+    "collectedBalance": {
+      "@id": "truist:collectedBalance",
+      "@type": "xsd:decimal"
+    },
+    "asOfDateTime": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "Transaction": "schema:MoneyTransfer",
+    "transactionId": "schema:identifier",
+    "transactionDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "postedDate": {
+      "@id": "truist:postedDate",
+      "@type": "xsd:date"
+    },
+    "amount": {
+      "@id": "schema:amount",
+      "@type": "xsd:decimal"
+    },
+    "transactionType": {
+      "@id": "truist:transactionType",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "merchantName": "schema:name",
+    "merchantCategory": {
+      "@id": "schema:category",
+      "@type": "xsd:string"
+    },
+    "bankReferenceNumber": {
+      "@id": "schema:orderNumber",
+      "@type": "xsd:string"
+    },
+    "checkNumber": {
+      "@id": "truist:checkNumber",
+      "@type": "xsd:string"
+    },
+    "achTraceNumber": {
+      "@id": "truist:achTraceNumber",
+      "@type": "xsd:string"
+    },
+    "wireReferenceNumber": {
+      "@id": "truist:wireReferenceNumber",
+      "@type": "xsd:string"
+    },
+    "runningBalance": {
+      "@id": "truist:runningBalance",
+      "@type": "xsd:decimal"
+    },
+
+    "FinancialOrganization": "schema:BankOrPaymentService",
+    "truistFinancial": {
+      "@id": "https://www.truist.com",
+      "@type": "schema:BankOrPaymentService"
+    }
+  }
+}

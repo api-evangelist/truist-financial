@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.truist.com/v1/commercial/accounts?customerId=cust_org_99887766",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9...",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "accounts": [
+        {
+          "accountId": "comm_acct_AA11BB22",
+          "accountNumber": "****9001",
+          "accountType": "CHECKING",
+          "accountName": "Operating Account",
+          "routingNumber": "053101121",
+          "status": "ACTIVE",
+          "currency": "USD",
+          "openedDate": "2020-01-08",
+          "customerId": "cust_org_99887766"
+        },
+        {
+          "accountId": "comm_acct_CC33DD44",
+          "accountNumber": "****9002",
+          "accountType": "MONEY_MARKET",
+          "accountName": "Treasury Reserve",
+          "routingNumber": "053101121",
+          "status": "ACTIVE",
+          "currency": "USD",
+          "openedDate": "2020-01-08",
+          "customerId": "cust_org_99887766"
+        }
+      ],
+      "totalCount": 2
+    }
+  }
+}
