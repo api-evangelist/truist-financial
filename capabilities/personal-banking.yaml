@@ -1,166 +1,285 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Truist Personal Banking"
-  description: >-
-    Unified personal and small business banking capability combining account management
-    and transaction history. Used by fintech developers, personal finance management
-    applications, and account aggregation platforms to give consumers and small business
-    owners a complete view of their Truist banking data.
+  label: Truist Personal Banking
+  description: Unified personal and small business banking capability combining account management and transaction history.
+    Used by fintech developers, personal finance management applications, and account aggregation platforms to give consumers
+    and small business owners a complete view of their Truist banking data.
   tags:
-    - Banking
-    - Personal Banking
-    - Small Business
-    - Accounts
-    - Transactions
-    - Open Banking
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Banking
+  - Personal Banking
+  - Small Business
+  - Accounts
+  - Transactions
+  - Open Banking
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      TRUIST_OAUTH2_TOKEN: TRUIST_OAUTH2_TOKEN
-
+- namespace: env
+  keys:
+    TRUIST_OAUTH2_TOKEN: TRUIST_OAUTH2_TOKEN
 capability:
   consumes:
-    - import: truist-personal-accounts
-      location: ./shared/personal-accounts.yaml
-    - import: truist-personal-transactions
-      location: ./shared/personal-transactions.yaml
-
+  - type: http
+    namespace: truist-personal-accounts
+    baseUri: https://api.truist.com/v1
+    description: Personal and small business account information API.
+    authentication:
+      type: bearer
+      token: '{{TRUIST_OAUTH2_TOKEN}}'
+    resources:
+    - name: personal-accounts
+      path: /personal/accounts
+      description: Personal and small business deposit accounts
+      operations:
+      - name: list-personal-accounts
+        method: GET
+        description: Retrieve a list of personal and small business deposit accounts for the authenticated client.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: personal-account
+      path: /personal/accounts/{accountId}
+      description: Individual personal account details
+      operations:
+      - name: get-personal-account
+        method: GET
+        description: Retrieve details for a specific personal or small business deposit account.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+          description: Unique account identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: personal-account-balances
+      path: /personal/accounts/{accountId}/balances
+      description: Personal account balance information
+      operations:
+      - name: get-personal-account-balances
+        method: GET
+        description: Retrieve current and available balances for a personal or small business account.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+          description: Unique account identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: truist-personal-transactions
+    baseUri: https://api.truist.com/v1
+    description: Personal and small business transaction history API.
+    authentication:
+      type: bearer
+      token: '{{TRUIST_OAUTH2_TOKEN}}'
+    resources:
+    - name: personal-transactions
+      path: /personal/accounts/{accountId}/transactions
+      description: Personal account transaction history
+      operations:
+      - name: list-personal-transactions
+        method: GET
+        description: Retrieve posted and pending transactions for a personal or small business account.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+          description: Unique account identifier
+        - name: fromDate
+          in: query
+          type: string
+          required: false
+          description: Start date (YYYY-MM-DD)
+        - name: toDate
+          in: query
+          type: string
+          required: false
+          description: End date (YYYY-MM-DD)
+        - name: status
+          in: query
+          type: string
+          required: false
+          description: Filter by POSTED, PENDING, or ALL
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Maximum number of transactions
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Pagination offset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: personal-transaction
+      path: /personal/accounts/{accountId}/transactions/{transactionId}
+      description: Individual transaction details
+      operations:
+      - name: get-personal-transaction
+        method: GET
+        description: Retrieve details for a specific transaction on a personal or small business account.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          required: true
+          description: Unique account identifier
+        - name: transactionId
+          in: path
+          type: string
+          required: true
+          description: Unique transaction identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: truist-personal-banking-api
-      description: "Unified REST API for personal and small business banking data."
-      resources:
-        - path: /v1/accounts
-          name: accounts
-          description: "Personal and small business deposit accounts"
-          operations:
-            - method: GET
-              name: list-accounts
-              description: "List all personal and small business deposit accounts."
-              call: "truist-personal-accounts.list-personal-accounts"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/accounts/{accountId}
-          name: account
-          description: "Individual account details"
-          operations:
-            - method: GET
-              name: get-account
-              description: "Get details for a specific personal or small business account."
-              call: "truist-personal-accounts.get-personal-account"
-              with:
-                accountId: "rest.accountId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/accounts/{accountId}/balances
-          name: account-balances
-          description: "Account balance information"
-          operations:
-            - method: GET
-              name: get-account-balances
-              description: "Get current and available balances for an account."
-              call: "truist-personal-accounts.get-personal-account-balances"
-              with:
-                accountId: "rest.accountId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/accounts/{accountId}/transactions
-          name: transactions
-          description: "Account transaction history"
-          operations:
-            - method: GET
-              name: list-transactions
-              description: "List transactions for a personal or small business account."
-              call: "truist-personal-transactions.list-personal-transactions"
-              with:
-                accountId: "rest.accountId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/accounts/{accountId}/transactions/{transactionId}
-          name: transaction
-          description: "Individual transaction details"
-          operations:
-            - method: GET
-              name: get-transaction
-              description: "Get details for a specific account transaction."
-              call: "truist-personal-transactions.get-personal-transaction"
-              with:
-                accountId: "rest.accountId"
-                transactionId: "rest.transactionId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9080
-      namespace: truist-personal-banking-mcp
-      transport: http
-      description: "MCP server for AI-assisted personal banking data access and financial management."
-      tools:
-        - name: list-accounts
-          description: "List all personal and small business deposit accounts for the authenticated client."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "truist-personal-accounts.list-personal-accounts"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-account
-          description: "Get details for a specific personal or small business deposit account."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "truist-personal-accounts.get-personal-account"
-          with:
-            accountId: "tools.accountId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-account-balances
-          description: "Get current and available balances for a personal or small business account."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "truist-personal-accounts.get-personal-account-balances"
-          with:
-            accountId: "tools.accountId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-transactions
-          description: "Retrieve transaction history for a personal account with date range and status filtering."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "truist-personal-transactions.list-personal-transactions"
-          with:
-            accountId: "tools.accountId"
-            fromDate: "tools.fromDate"
-            toDate: "tools.toDate"
-            status: "tools.status"
-            limit: "tools.limit"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-transaction
-          description: "Get details for a specific personal account transaction."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "truist-personal-transactions.get-personal-transaction"
-          with:
-            accountId: "tools.accountId"
-            transactionId: "tools.transactionId"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: truist-personal-banking-api
+    description: Unified REST API for personal and small business banking data.
+    resources:
+    - path: /v1/accounts
+      name: accounts
+      description: Personal and small business deposit accounts
+      operations:
+      - method: GET
+        name: list-accounts
+        description: List all personal and small business deposit accounts.
+        call: truist-personal-accounts.list-personal-accounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountId}
+      name: account
+      description: Individual account details
+      operations:
+      - method: GET
+        name: get-account
+        description: Get details for a specific personal or small business account.
+        call: truist-personal-accounts.get-personal-account
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountId}/balances
+      name: account-balances
+      description: Account balance information
+      operations:
+      - method: GET
+        name: get-account-balances
+        description: Get current and available balances for an account.
+        call: truist-personal-accounts.get-personal-account-balances
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountId}/transactions
+      name: transactions
+      description: Account transaction history
+      operations:
+      - method: GET
+        name: list-transactions
+        description: List transactions for a personal or small business account.
+        call: truist-personal-transactions.list-personal-transactions
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{accountId}/transactions/{transactionId}
+      name: transaction
+      description: Individual transaction details
+      operations:
+      - method: GET
+        name: get-transaction
+        description: Get details for a specific account transaction.
+        call: truist-personal-transactions.get-personal-transaction
+        with:
+          accountId: rest.accountId
+          transactionId: rest.transactionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9080
+    namespace: truist-personal-banking-mcp
+    transport: http
+    description: MCP server for AI-assisted personal banking data access and financial management.
+    tools:
+    - name: list-accounts
+      description: List all personal and small business deposit accounts for the authenticated client.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: truist-personal-accounts.list-personal-accounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-account
+      description: Get details for a specific personal or small business deposit account.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: truist-personal-accounts.get-personal-account
+      with:
+        accountId: tools.accountId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-account-balances
+      description: Get current and available balances for a personal or small business account.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: truist-personal-accounts.get-personal-account-balances
+      with:
+        accountId: tools.accountId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-transactions
+      description: Retrieve transaction history for a personal account with date range and status filtering.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: truist-personal-transactions.list-personal-transactions
+      with:
+        accountId: tools.accountId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+        status: tools.status
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-transaction
+      description: Get details for a specific personal account transaction.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: truist-personal-transactions.get-personal-transaction
+      with:
+        accountId: tools.accountId
+        transactionId: tools.transactionId
+      outputParameters:
+      - type: object
+        mapping: $.
