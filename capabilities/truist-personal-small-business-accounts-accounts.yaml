@@ -1,0 +1,179 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Truist Personal and Small Business Accounts API — Accounts
+  description: 'Truist Personal and Small Business Accounts API — Accounts. 3 operations. Lead operation: List Personal Accounts.
+    Self-contained Naftiko capability covering one Truist Financial business surface.'
+  tags:
+  - Truist Financial
+  - Accounts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRUIST_FINANCIAL_API_KEY: TRUIST_FINANCIAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: truist-personal-small-business-accounts-accounts
+    baseUri: https://api.truist.com/v1
+    description: Truist Personal and Small Business Accounts API — Accounts business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: personal-accounts
+      path: /personal/accounts
+      operations:
+      - name: listpersonalaccounts
+        method: GET
+        description: List Personal Accounts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer token for OAuth 2.0 authentication
+          required: true
+    - name: personal-accounts-accountId
+      path: /personal/accounts/{accountId}
+      operations:
+      - name: getpersonalaccount
+        method: GET
+        description: Get Personal Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Unique account identifier
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer token for OAuth 2.0 authentication
+          required: true
+    - name: personal-accounts-accountId-balances
+      path: /personal/accounts/{accountId}/balances
+      operations:
+      - name: getpersonalaccountbalances
+        method: GET
+        description: Get Personal Account Balances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Unique account identifier
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Bearer token for OAuth 2.0 authentication
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRUIST_FINANCIAL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: truist-personal-small-business-accounts-accounts-rest
+    port: 8080
+    description: REST adapter for Truist Personal and Small Business Accounts API — Accounts. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/personal/accounts
+      name: personal-accounts
+      description: REST surface for personal-accounts.
+      operations:
+      - method: GET
+        name: listpersonalaccounts
+        description: List Personal Accounts
+        call: truist-personal-small-business-accounts-accounts.listpersonalaccounts
+        with:
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/personal/accounts/{accountid}
+      name: personal-accounts-accountid
+      description: REST surface for personal-accounts-accountId.
+      operations:
+      - method: GET
+        name: getpersonalaccount
+        description: Get Personal Account
+        call: truist-personal-small-business-accounts-accounts.getpersonalaccount
+        with:
+          accountId: rest.accountId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/personal/accounts/{accountid}/balances
+      name: personal-accounts-accountid-balances
+      description: REST surface for personal-accounts-accountId-balances.
+      operations:
+      - method: GET
+        name: getpersonalaccountbalances
+        description: Get Personal Account Balances
+        call: truist-personal-small-business-accounts-accounts.getpersonalaccountbalances
+        with:
+          accountId: rest.accountId
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: truist-personal-small-business-accounts-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Truist Personal and Small Business Accounts API — Accounts. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-personal-accounts
+      description: List Personal Accounts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: truist-personal-small-business-accounts-accounts.listpersonalaccounts
+      with:
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-personal-account
+      description: Get Personal Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: truist-personal-small-business-accounts-accounts.getpersonalaccount
+      with:
+        accountId: tools.accountId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-personal-account-balances
+      description: Get Personal Account Balances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: truist-personal-small-business-accounts-accounts.getpersonalaccountbalances
+      with:
+        accountId: tools.accountId
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,166 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Truist Commercial Account Transactions API — Commercial Transactions
+  description: 'Truist Commercial Account Transactions API — Commercial Transactions. 2 operations. Lead operation: List Commercial
+    Account Transactions. Self-contained Naftiko capability covering one Truist Financial business surface.'
+  tags:
+  - Truist Financial
+  - Commercial Transactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRUIST_FINANCIAL_API_KEY: TRUIST_FINANCIAL_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: truist-commercial-account-transactions-commercial-transactions
+    baseUri: https://api.truist.com/v1
+    description: Truist Commercial Account Transactions API — Commercial Transactions business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: commercial-accounts-accountId-transactions
+      path: /commercial/accounts/{accountId}/transactions
+      operations:
+      - name: listcommercialtransactions
+        method: GET
+        description: List Commercial Account Transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Unique account identifier
+          required: true
+        - name: fromDate
+          in: query
+          type: string
+          description: Start date for transaction retrieval (YYYY-MM-DD)
+        - name: toDate
+          in: query
+          type: string
+          description: End date for transaction retrieval (YYYY-MM-DD)
+        - name: transactionType
+          in: query
+          type: string
+          description: Filter by transaction type
+        - name: debitCreditIndicator
+          in: query
+          type: string
+          description: Filter by debit or credit
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of transactions to return
+        - name: offset
+          in: query
+          type: integer
+          description: Pagination offset
+    - name: commercial-accounts-accountId-transactions-transactionId
+      path: /commercial/accounts/{accountId}/transactions/{transactionId}
+      operations:
+      - name: getcommercialtransaction
+        method: GET
+        description: Get Commercial Transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Unique account identifier
+          required: true
+        - name: transactionId
+          in: path
+          type: string
+          description: Unique transaction identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRUIST_FINANCIAL_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: truist-commercial-account-transactions-commercial-transactions-rest
+    port: 8080
+    description: REST adapter for Truist Commercial Account Transactions API — Commercial Transactions. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/commercial/accounts/{accountid}/transactions
+      name: commercial-accounts-accountid-transactions
+      description: REST surface for commercial-accounts-accountId-transactions.
+      operations:
+      - method: GET
+        name: listcommercialtransactions
+        description: List Commercial Account Transactions
+        call: truist-commercial-account-transactions-commercial-transactions.listcommercialtransactions
+        with:
+          accountId: rest.accountId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+          transactionType: rest.transactionType
+          debitCreditIndicator: rest.debitCreditIndicator
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/commercial/accounts/{accountid}/transactions/{transactionid}
+      name: commercial-accounts-accountid-transactions-transactionid
+      description: REST surface for commercial-accounts-accountId-transactions-transactionId.
+      operations:
+      - method: GET
+        name: getcommercialtransaction
+        description: Get Commercial Transaction
+        call: truist-commercial-account-transactions-commercial-transactions.getcommercialtransaction
+        with:
+          accountId: rest.accountId
+          transactionId: rest.transactionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: truist-commercial-account-transactions-commercial-transactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Truist Commercial Account Transactions API — Commercial Transactions. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: list-commercial-account-transactions
+      description: List Commercial Account Transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: truist-commercial-account-transactions-commercial-transactions.listcommercialtransactions
+      with:
+        accountId: tools.accountId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+        transactionType: tools.transactionType
+        debitCreditIndicator: tools.debitCreditIndicator
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-commercial-transaction
+      description: Get Commercial Transaction
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: truist-commercial-account-transactions-commercial-transactions.getcommercialtransaction
+      with:
+        accountId: tools.accountId
+        transactionId: tools.transactionId
+      outputParameters:
+      - type: object
+        mapping: $.
