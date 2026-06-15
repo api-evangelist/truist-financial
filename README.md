@@ -1,140 +1,278 @@
-# Truist Financial
+# Truist Financial (truist-financial)
 
-Truist Financial Corporation is a purpose-driven financial services company headquartered in Charlotte, North Carolina, formed by the merger of BB&T and SunTrust Banks in 2019. As one of the ten largest commercial banks in the United States, Truist offers a comprehensive suite of developer APIs through its Developer Center, enabling financial institutions, fintech companies, and enterprise clients to integrate banking capabilities into their applications.
+Truist Financial Corporation is a purpose-driven financial services company headquartered in Charlotte, North Carolina, formed by the merger of BB&T and SunTrust Banks in 2019. As one of the ten largest commercial banks in the United States, Truist offers a comprehensive suite of developer APIs through its Developer Center, enabling financial institutions, fintech companies, and enterprise clients to integrate banking capabilities into their applications. The platform covers personal and small business banking, commercial accounts, transactions, open banking, and association services, with OAuth 2.0 and API key authentication. Truist launched FDX-compliant open banking in 2026, partnering with Mastercard and Plaid to enable secure, tokenized financial data sharing for consumers and businesses.
 
-The platform covers personal and small business banking, commercial accounts, transactions, open banking, and association services. Truist launched FDX-compliant open banking in February 2026, partnering with Mastercard and Plaid to enable secure, tokenized financial data sharing for consumers and businesses.
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/apis.yml)
 
-**Developer Center:** [developer.truist.com](https://developer.truist.com/)
-**Open Banking Portal:** [truist-1132.my.site.com/truist/s/](https://truist-1132.my.site.com/truist/s/)
+## Scope
 
----
+- **Type:** Index
+- **Access:** 3rd-Party
+
+## Tags
+
+- Banking
+- Financial Services
+- Open Banking
+- Commercial Banking
+- Personal Banking
+- Payments
+- Accounts
+- Transactions
+- Fortune 500
+
+## Timestamps
+
+- **Created:** 2026-03-21
+- **Modified:** 2026-05-19
 
 ## APIs
 
-### Personal and Small Business Accounts API
-Access consumer and small business deposit account details, types, and balances.
-- [Overview](https://developer.truist.com/api/personal-and-small-business-accounts/overview)
-- [OpenAPI Spec](openapi/truist-personal-small-business-accounts-openapi.yml)
+### Truist Personal and Small Business Accounts API
 
-### Personal and Small Business Transactions API
-Retrieve transaction history for personal and small business accounts with date range and status filtering.
-- [Overview](https://developer.truist.com/api/personal-and-small-business-transactions/overview)
-- [OpenAPI Spec](openapi/truist-personal-small-business-transactions-openapi.yml)
+The Truist Personal and Small Business Accounts API provides programmatic access to consumer and small business deposit account information, including account details, balances, account types, and ownership information. Developers can retrieve account lists for authenticated clients, access individual account details, and retrieve balance information for checking, savings, and money market accounts. The API supports OAuth 2.0 authentication and is designed for fintech integrations, account aggregation platforms, and personal finance management applications.
 
-### Personal and Small Business Client Contact API
-Access and manage client contact information for personal and small business accounts.
-- [Overview](https://developer.truist.com/api/personal-and-small-business-client-contact/overview)
+- **Human URL:** [https://developer.truist.com/api/personal-and-small-business-accounts/overview](https://developer.truist.com/api/personal-and-small-business-accounts/overview)
+- **Base URL:** `https://api.truist.com/v1`
 
-### Commercial Accounts API
-Access commercial deposit account details, balances, and consolidated summaries for corporate clients.
-- [Overview](https://developer.truist.com/api/commercial-accounts/overview)
-- [OpenAPI Spec](openapi/truist-commercial-accounts-openapi.yml)
+#### Tags
 
-### Commercial Account Transactions API
-Retrieve commercial transaction history including ACH, wire transfers, checks, and book transfers.
-- [Overview](https://developer.truist.com/api/commercial-account-transactions/overview)
-- [OpenAPI Spec](openapi/truist-commercial-account-transactions-openapi.yml)
+- Accounts
+- Personal Banking
+- Small Business
+- Banking
 
-### Commercial Account Transaction Image API
-Access check images and transaction document images for commercial account transactions.
-- [Overview](https://developer.truist.com/api/commercial-account-transaction-image/overview)
+#### Properties
 
-### Open Banking API
-FDX-compliant open banking access with client-permissioned data sharing via Mastercard and Plaid partnerships.
+- [Documentation](https://developer.truist.com/api/personal-and-small-business-accounts/overview)
+- [Documentation](https://developer.truist.com/api/personal-and-small-business-accounts/documentation)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-personal-small-business-accounts-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Truist Personal and Small Business Transactions API
+
+The Truist Personal and Small Business Transactions API enables retrieval of transaction history for personal and small business accounts. Developers can access posted and pending transactions, filter by date range, and retrieve transaction details including merchant information, amounts, and transaction categories. The API supports OAuth 2.0 authentication and is suitable for personal finance management tools, accounting integrations, and expense tracking applications.
+
+- **Human URL:** [https://developer.truist.com/api/personal-and-small-business-transactions/overview](https://developer.truist.com/api/personal-and-small-business-transactions/overview)
+- **Base URL:** `https://api.truist.com/v1`
+
+#### Tags
+
+- Transactions
+- Personal Banking
+- Small Business
+- Banking
+
+#### Properties
+
+- [Documentation](https://developer.truist.com/api/personal-and-small-business-transactions/overview)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-personal-small-business-transactions-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Truist Personal and Small Business Client Contact API
+
+The Truist Personal and Small Business Client Contact API provides access to client contact information associated with personal and small business accounts, including address, phone number, and email address data. This API enables authorized applications to retrieve and manage contact details for authenticated Truist clients, supporting CRM integrations and account management workflows.
+
+- **Human URL:** [https://developer.truist.com/api/personal-and-small-business-client-contact/overview](https://developer.truist.com/api/personal-and-small-business-client-contact/overview)
+- **Base URL:** `https://api.truist.com/v1`
+
+#### Tags
+
+- Client Management
+- Personal Banking
+- Small Business
+- Contact Information
+- Banking
+
+#### Properties
+
+- [Documentation](https://developer.truist.com/api/personal-and-small-business-client-contact/overview)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Truist Commercial Accounts API
+
+The Truist Commercial Accounts API provides programmatic access to commercial deposit account information, including account balances, account details, and account summary data for commercial and corporate clients. The API supports treasury management integrations, ERP system connectivity, and cash management platforms. It enables real-time balance reporting, account hierarchy retrieval, and integration with commercial banking operations. OAuth 2.0 and API key authentication are supported.
+
+- **Human URL:** [https://developer.truist.com/api/commercial-accounts/overview](https://developer.truist.com/api/commercial-accounts/overview)
+- **Base URL:** `https://api.truist.com/v1`
+
+#### Tags
+
+- Accounts
+- Commercial Banking
+- Treasury
+- Banking
+
+#### Properties
+
+- [Documentation](https://developer.truist.com/api/commercial-accounts/overview)
+- [Documentation](https://developer.truist.com/api/commercial-accounts/documentation)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-commercial-accounts-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Truist Commercial Account Transactions API
+
+The Truist Commercial Account Transactions API enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. The API supports filtering by date range and transaction type, enabling ERP integrations, cash flow reconciliation, and automated accounting workflows. It is designed for treasury teams, corporate finance applications, and commercial banking integrations.
+
+- **Human URL:** [https://developer.truist.com/api/commercial-account-transactions/overview](https://developer.truist.com/api/commercial-account-transactions/overview)
+- **Base URL:** `https://api.truist.com/v1`
+
+#### Tags
+
+- Transactions
+- Commercial Banking
+- Treasury
+- Banking
+
+#### Properties
+
+- [Documentation](https://developer.truist.com/api/commercial-account-transactions/overview)
+- [Documentation](https://developer.truist.com/api/commercial-account-transactions/documentation)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-commercial-account-transactions-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Truist Commercial Account Transaction Image API
+
+The Truist Commercial Account Transaction Image API provides access to check images and transaction document images associated with commercial account transactions. Developers can retrieve front and back images of checks, deposit slips, and other payment documents by transaction reference. The API supports document archiving, audit workflows, and automated reconciliation integrations for commercial banking clients.
+
+- **Human URL:** [https://developer.truist.com/api/commercial-account-transaction-image/overview](https://developer.truist.com/api/commercial-account-transaction-image/overview)
+- **Base URL:** `https://api.truist.com/v1`
+
+#### Tags
+
+- Transactions
+- Check Images
+- Commercial Banking
+- Documents
+- Banking
+
+#### Properties
+
+- [Documentation](https://developer.truist.com/api/commercial-account-transaction-image/overview)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Truist Open Banking API
+
+The Truist Open Banking API provides secure, FDX-compliant (Financial Data Exchange) access to consumer and small business financial data, enabling authorized fintech applications to retrieve account balances, transaction history, and payment information with client consent. Launched in February 2026 in partnership with Mastercard's open finance platform, the API replaces credential sharing with tokenized, permission-based access. Truist expanded the program through a Plaid data-access agreement in March 2026, enabling clients to manage and revoke third-party data access through a centralized consent portal. The API supports account information, transaction data, investment data, and loan data per FDX standards.
+
+- **Human URL:** [https://truist-1132.my.site.com/truist/s/](https://truist-1132.my.site.com/truist/s/)
+- **Base URL:** `https://api.truist.com/v1`
+
+#### Tags
+
+- Open Banking
+- FDX
+- Financial Data Exchange
+- Accounts
+- Banking
+
+#### Properties
+
 - [Portal](https://truist-1132.my.site.com/truist/s/)
+- [Documentation](https://truist-1132.my.site.com/truist/s/subscriptions)
+- [Announcement](https://www.prnewswire.com/news-releases/truist-launches-secure-open-banking-experience-302685248.html)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-### Association Services API
-Banking and payment capabilities for associations, non-profits, and membership organizations.
-- [Overview](https://developer.truist.com/categories/association-services)
+### Truist Association Services API
 
----
+The Truist Association Services API provides banking and payment capabilities tailored for associations, non-profit organizations, and community groups. The API supports dues collection, payment processing, member account management, and reporting for trade associations, homeowners associations, and membership organizations that bank with Truist. It enables integration of banking workflows into association management platforms and member portals.
 
-## Artifacts
+- **Human URL:** [https://developer.truist.com/categories/association-services](https://developer.truist.com/categories/association-services)
+- **Base URL:** `https://api.truist.com/v1`
 
-### OpenAPI Specifications
-| Spec | Description |
-|---|---|
-| [truist-personal-small-business-accounts-openapi.yml](openapi/truist-personal-small-business-accounts-openapi.yml) | Personal and Small Business Accounts API |
-| [truist-personal-small-business-transactions-openapi.yml](openapi/truist-personal-small-business-transactions-openapi.yml) | Personal and Small Business Transactions API |
-| [truist-commercial-accounts-openapi.yml](openapi/truist-commercial-accounts-openapi.yml) | Commercial Accounts API |
-| [truist-commercial-account-transactions-openapi.yml](openapi/truist-commercial-account-transactions-openapi.yml) | Commercial Account Transactions API |
+#### Tags
 
-### Spectral Rules
-| File | Description |
-|---|---|
-| [truist-financial-rules.yml](rules/truist-financial-rules.yml) | Spectral ruleset enforcing Truist API conventions |
+- Association Services
+- Community Banking
+- Banking
+- Payments
 
-### Naftiko Capabilities
+#### Properties
 
-#### Shared Definitions
-| File | API |
-|---|---|
-| [shared/personal-accounts.yaml](capabilities/shared/personal-accounts.yaml) | Personal and Small Business Accounts API |
-| [shared/personal-transactions.yaml](capabilities/shared/personal-transactions.yaml) | Personal and Small Business Transactions API |
-| [shared/commercial-accounts.yaml](capabilities/shared/commercial-accounts.yaml) | Commercial Accounts API |
-| [shared/commercial-transactions.yaml](capabilities/shared/commercial-transactions.yaml) | Commercial Account Transactions API |
+- [Documentation](https://developer.truist.com/categories/association-services)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [Postman Collection](collections/truist-commercial-account-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-account-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-commercial-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-commercial-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-accounts.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-accounts.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/truist-personal-small-business-transactions.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/truist-personal-small-business-transactions.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-#### Workflow Capabilities
-| File | Description | APIs |
-|---|---|---|
-| [personal-banking.yaml](capabilities/personal-banking.yaml) | Personal and small business banking data access | Personal Accounts + Transactions |
-| [commercial-banking.yaml](capabilities/commercial-banking.yaml) | Commercial treasury management and transaction reporting | Commercial Accounts + Transactions |
-
-### JSON Schema
-| File | Description |
-|---|---|
-| [truist-financial-account-schema.json](json-schema/truist-financial-account-schema.json) | Truist deposit account schema |
-| [truist-financial-transaction-schema.json](json-schema/truist-financial-transaction-schema.json) | Truist banking transaction schema |
-
-### JSON Structure
-| File | Description |
-|---|---|
-| [truist-financial-account-structure.json](json-structure/truist-financial-account-structure.json) | Account field structure documentation |
-| [truist-financial-transaction-structure.json](json-structure/truist-financial-transaction-structure.json) | Transaction field structure documentation |
-
-### JSON-LD Context
-| File | Description |
-|---|---|
-| [truist-financial-context.jsonld](json-ld/truist-financial-context.jsonld) | JSON-LD context mapping Truist vocabulary to schema.org and FIBO ontologies |
-
-### Examples
-| File | Description |
-|---|---|
-| [truist-list-personal-accounts-example.json](examples/truist-list-personal-accounts-example.json) | List personal accounts |
-| [truist-get-personal-account-balances-example.json](examples/truist-get-personal-account-balances-example.json) | Get account balances |
-| [truist-list-personal-transactions-example.json](examples/truist-list-personal-transactions-example.json) | List personal transactions |
-| [truist-list-commercial-accounts-example.json](examples/truist-list-commercial-accounts-example.json) | List commercial accounts |
-| [truist-list-commercial-transactions-example.json](examples/truist-list-commercial-transactions-example.json) | List commercial transactions |
-
-### Vocabulary
-| File | Description |
-|---|---|
-| [truist-financial-vocabulary.yml](vocabulary/truist-financial-vocabulary.yml) | Domain vocabulary for Truist banking APIs |
-
----
-
-## Authentication
-
-Truist APIs use OAuth 2.0 authentication:
-- **Personal banking APIs**: Authorization Code flow (consumer-permissioned)
-- **Commercial banking APIs**: Client Credentials flow (server-to-server)
-- **Open Banking**: FDX-compliant OAuth 2.0 with tokenized consent management
-
-[Authentication Guide](https://developer.truist.com/api/working-with-truist)
-
----
-
-## Links
+## Common Properties
 
 - [Website](https://www.truist.com)
-- [Developer Center](https://developer.truist.com/)
-- [Open Banking Portal](https://truist-1132.my.site.com/truist/s/)
+- [Portal](https://developer.truist.com/)
+- [Getting Started](https://developer.truist.com/api/working-with-truist)
+- [Authentication](https://developer.truist.com/api/working-with-truist)
+- [Portal](https://truist-1132.my.site.com/truist/s/)
+- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/rules/truist-financial-rules.yml)
 - [Investor Relations](https://investor.truist.com/)
-- [Privacy Policy](https://www.truist.com/privacy-security)
-- [Terms of Service](https://www.truist.com/about-truist/terms-conditions)
-- [GitHub](https://github.com/truistbank)
+- [About](https://www.truist.com/about-truist)
+- [Blog](https://ir.truist.com/news-releases)
 - [LinkedIn](https://www.linkedin.com/company/truistfinancial)
 - [X (Twitter)](https://twitter.com/Truist)
+- [Git Hub](https://github.com/truistbank)
+- [Privacy Policy](https://www.truist.com/privacy-security)
+- [Terms of Service](https://www.truist.com/about-truist/terms-conditions)
+- [Features](undefined)
+- [L L Ms Txt](https://developer.truist.com/llms.txt)
 
 ## Maintainers
 
