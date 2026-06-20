@@ -10,7 +10,7 @@ description: >-
   services, with OAuth 2.0 and API key authentication. Truist launched FDX-compliant open banking in 2026, partnering
   with Mastercard and Plaid to enable secure, tokenized financial data sharing for consumers and businesses.
 type: Index
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Banking
   - Financial Services
@@ -33,7 +33,7 @@ apis:
       - Personal Banking
       - Small Business
       - Banking
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://developer.truist.com/api/personal-and-small-business-accounts/overview
     properties:
@@ -60,7 +60,7 @@ apis:
       - Personal Banking
       - Small Business
       - Banking
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://developer.truist.com/api/personal-and-small-business-transactions/overview
     properties:
@@ -85,7 +85,7 @@ apis:
       - Small Business
       - Contact Information
       - Banking
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://developer.truist.com/api/personal-and-small-business-client-contact/overview
     properties:
@@ -105,7 +105,7 @@ apis:
       - Commercial Banking
       - Treasury
       - Banking
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://developer.truist.com/api/commercial-accounts/overview
     properties:
@@ -131,7 +131,7 @@ apis:
       - Commercial Banking
       - Treasury
       - Banking
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://developer.truist.com/api/commercial-account-transactions/overview
     properties:
@@ -157,7 +157,7 @@ apis:
       - Commercial Banking
       - Documents
       - Banking
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://developer.truist.com/api/commercial-account-transaction-image/overview
     properties:
@@ -178,7 +178,7 @@ apis:
       - Financial Data Exchange
       - Accounts
       - Banking
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://truist-1132.my.site.com/truist/s/
     properties:
@@ -203,7 +203,7 @@ apis:
       - Community Banking
       - Banking
       - Payments
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     baseURL: https://api.truist.com/v1
     humanURL: https://developer.truist.com/categories/association-services
     properties:
