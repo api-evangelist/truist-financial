@@ -218,6 +218,10 @@ apis:
       that bank with Truist. It enables integration of banking workflows into association management platforms and
       member portals.
 common:
+  - type: Authentication
+    url: authentication/truist-financial-authentication.yml
+  - type: OAuthScopes
+    url: scopes/truist-financial-scopes.yml
   - url: https://www.truist.com
     name: Truist Website
     type: Website

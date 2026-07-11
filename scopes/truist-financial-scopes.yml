@@ -1,0 +1,52 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/truist-commercial-account-transactions-openapi.yml, openapi/truist-commercial-accounts-openapi.yml,
+  openapi/truist-personal-small-business-accounts-openapi.yml, openapi/truist-personal-small-business-transactions-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/truist-commercial-account-transactions-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.truist.com/oauth2/token
+- name: OAuth2
+  source: openapi/truist-commercial-accounts-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.truist.com/oauth2/token
+- name: OAuth2
+  source: openapi/truist-personal-small-business-accounts-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.truist.com/oauth2/authorize
+    tokenUrl: https://api.truist.com/oauth2/token
+- name: OAuth2
+  source: openapi/truist-personal-small-business-transactions-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.truist.com/oauth2/authorize
+    tokenUrl: https://api.truist.com/oauth2/token
+scopes:
+- scope: accounts:read
+  description: Read access to account information
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/truist-personal-small-business-accounts-openapi.yml
+- scope: commercial.accounts:read
+  description: Read access to commercial account information
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/truist-commercial-accounts-openapi.yml
+- scope: commercial.transactions:read
+  description: Read access to commercial transaction data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/truist-commercial-account-transactions-openapi.yml
+- scope: transactions:read
+  description: Read access to transaction data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/truist-personal-small-business-transactions-openapi.yml
