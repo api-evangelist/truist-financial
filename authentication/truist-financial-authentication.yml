@@ -1,0 +1,30 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/truist-commercial-account-transactions-openapi.yml, openapi/truist-commercial-accounts-openapi.yml,
+  openapi/truist-personal-small-business-accounts-openapi.yml, openapi/truist-personal-small-business-transactions-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.truist.com/oauth2/token
+    scopes: 1
+  sources:
+  - openapi/truist-commercial-account-transactions-openapi.yml
+  - openapi/truist-commercial-accounts-openapi.yml
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.truist.com/oauth2/authorize
+    tokenUrl: https://api.truist.com/oauth2/token
+    scopes: 1
+  sources:
+  - openapi/truist-personal-small-business-accounts-openapi.yml
+  - openapi/truist-personal-small-business-transactions-openapi.yml
