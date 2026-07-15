@@ -218,6 +218,8 @@ apis:
       that bank with Truist. It enables integration of banking workflows into association management platforms and
       member portals.
 common:
+  - type: AgenticAccess
+    url: agentic-access/truist-financial-agentic-access.yml
   - type: DomainSecurity
     url: security/truist-financial-domain-security.yml
   - type: Authentication
