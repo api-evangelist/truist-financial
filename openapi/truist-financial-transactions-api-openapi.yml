@@ -1,20 +1,17 @@
 openapi: 3.0.3
 info:
-  title: Truist Personal and Small Business Transactions API
-  description: >-
-    Enables retrieval of transaction history for personal and small business accounts,
-    including posted and pending transactions with merchant information, amounts, and
-    transaction categories.
+  title: Truist Commercial Account Accounts Transactions API
+  description: Enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. Supports ERP integrations, cash flow reconciliation, and automated accounting workflows.
   version: 1.0.0
   contact:
     url: https://developer.truist.com/
   termsOfService: https://www.truist.com/about-truist/terms-conditions
 servers:
-  - url: https://api.truist.com/v1
-    description: Production
+- url: https://api.truist.com/v1
+  description: Production
 tags:
-  - name: Transactions
-    description: Personal and small business transaction operations
+- name: Transactions
+  description: Personal and small business transaction operations
 paths:
   /personal/accounts/{accountId}/transactions:
     get:
@@ -22,52 +19,56 @@ paths:
       summary: List Personal Account Transactions
       description: Retrieve posted and pending transactions for a personal or small business account with optional date range filtering.
       tags:
-        - Transactions
+      - Transactions
       security:
-        - OAuth2: [transactions:read]
+      - OAuth2:
+        - transactions:read
       parameters:
-        - name: accountId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique account identifier
-        - name: fromDate
-          in: query
-          required: false
-          schema:
-            type: string
-            format: date
-          description: Start date for transaction retrieval (YYYY-MM-DD)
-        - name: toDate
-          in: query
-          required: false
-          schema:
-            type: string
-            format: date
-          description: End date for transaction retrieval (YYYY-MM-DD)
-        - name: status
-          in: query
-          required: false
-          schema:
-            type: string
-            enum: [POSTED, PENDING, ALL]
-          description: Filter by transaction status
-        - name: limit
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 50
-            maximum: 250
-          description: Maximum number of transactions to return
-        - name: offset
-          in: query
-          required: false
-          schema:
-            type: integer
-            default: 0
-          description: Pagination offset
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique account identifier
+      - name: fromDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Start date for transaction retrieval (YYYY-MM-DD)
+      - name: toDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: End date for transaction retrieval (YYYY-MM-DD)
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - POSTED
+          - PENDING
+          - ALL
+        description: Filter by transaction status
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 50
+          maximum: 250
+        description: Maximum number of transactions to return
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+        description: Pagination offset
       responses:
         '200':
           description: Transactions retrieved successfully
@@ -87,22 +88,23 @@ paths:
       summary: Get Personal Transaction
       description: Retrieve details for a specific transaction on a personal or small business account.
       tags:
-        - Transactions
+      - Transactions
       security:
-        - OAuth2: [transactions:read]
+      - OAuth2:
+        - transactions:read
       parameters:
-        - name: accountId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique account identifier
-        - name: transactionId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique transaction identifier
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique account identifier
+      - name: transactionId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique transaction identifier
       responses:
         '200':
           description: Transaction retrieved successfully
@@ -115,32 +117,7 @@ paths:
         '404':
           description: Transaction not found
 components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://api.truist.com/oauth2/authorize
-          tokenUrl: https://api.truist.com/oauth2/token
-          scopes:
-            transactions:read: Read access to transaction data
   schemas:
-    TransactionListResponse:
-      type: object
-      properties:
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
-        totalCount:
-          type: integer
-          description: Total number of matching transactions
-        pageSize:
-          type: integer
-          description: Number of transactions in this response
-        offset:
-          type: integer
-          description: Current pagination offset
     Transaction:
       type: object
       properties:
@@ -168,11 +145,18 @@ components:
           description: Transaction currency
         status:
           type: string
-          enum: [POSTED, PENDING]
+          enum:
+          - POSTED
+          - PENDING
           description: Transaction status
         transactionType:
           type: string
-          enum: [DEBIT, CREDIT, FEE, INTEREST, TRANSFER]
+          enum:
+          - DEBIT
+          - CREDIT
+          - FEE
+          - INTEREST
+          - TRANSFER
           description: Type of transaction
         description:
           type: string
@@ -193,3 +177,27 @@ components:
           type: number
           format: double
           description: Account balance after transaction
+    TransactionListResponse:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        totalCount:
+          type: integer
+          description: Total number of matching transactions
+        pageSize:
+          type: integer
+          description: Number of transactions in this response
+        offset:
+          type: integer
+          description: Current pagination offset
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.truist.com/oauth2/token
+          scopes:
+            commercial.transactions:read: Read access to commercial transaction data

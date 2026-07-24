@@ -1,20 +1,17 @@
 openapi: 3.0.3
 info:
-  title: Truist Personal and Small Business Accounts API
-  description: >-
-    Provides programmatic access to consumer and small business deposit account
-    information, including account details, balances, account types, and ownership
-    information for authenticated Truist clients.
+  title: Truist Commercial Account Transactions Accounts API
+  description: Enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. Supports ERP integrations, cash flow reconciliation, and automated accounting workflows.
   version: 1.0.0
   contact:
     url: https://developer.truist.com/
   termsOfService: https://www.truist.com/about-truist/terms-conditions
 servers:
-  - url: https://api.truist.com/v1
-    description: Production
+- url: https://api.truist.com/v1
+  description: Production
 tags:
-  - name: Accounts
-    description: Personal and small business account operations
+- name: Accounts
+  description: Personal and small business account operations
 paths:
   /personal/accounts:
     get:
@@ -22,16 +19,17 @@ paths:
       summary: List Personal Accounts
       description: Retrieve a list of personal and small business deposit accounts for the authenticated client.
       tags:
-        - Accounts
+      - Accounts
       security:
-        - OAuth2: [accounts:read]
+      - OAuth2:
+        - accounts:read
       parameters:
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Bearer token for OAuth 2.0 authentication
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Bearer token for OAuth 2.0 authentication
       responses:
         '200':
           description: List of accounts retrieved successfully
@@ -49,22 +47,23 @@ paths:
       summary: Get Personal Account
       description: Retrieve details for a specific personal or small business deposit account.
       tags:
-        - Accounts
+      - Accounts
       security:
-        - OAuth2: [accounts:read]
+      - OAuth2:
+        - accounts:read
       parameters:
-        - name: accountId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique account identifier
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Bearer token for OAuth 2.0 authentication
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique account identifier
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Bearer token for OAuth 2.0 authentication
       responses:
         '200':
           description: Account details retrieved successfully
@@ -84,22 +83,23 @@ paths:
       summary: Get Personal Account Balances
       description: Retrieve current and available balances for a personal or small business account.
       tags:
-        - Accounts
+      - Accounts
       security:
-        - OAuth2: [accounts:read]
+      - OAuth2:
+        - accounts:read
       parameters:
-        - name: accountId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique account identifier
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Bearer token for OAuth 2.0 authentication
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique account identifier
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Bearer token for OAuth 2.0 authentication
       responses:
         '200':
           description: Account balances retrieved successfully
@@ -112,26 +112,7 @@ paths:
         '404':
           description: Account not found
 components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://api.truist.com/oauth2/authorize
-          tokenUrl: https://api.truist.com/oauth2/token
-          scopes:
-            accounts:read: Read access to account information
   schemas:
-    AccountListResponse:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-        totalCount:
-          type: integer
-          description: Total number of accounts
     Account:
       type: object
       properties:
@@ -143,7 +124,11 @@ components:
           description: Masked account number
         accountType:
           type: string
-          enum: [CHECKING, SAVINGS, MONEY_MARKET, CERTIFICATE_OF_DEPOSIT]
+          enum:
+          - CHECKING
+          - SAVINGS
+          - MONEY_MARKET
+          - CERTIFICATE_OF_DEPOSIT
           description: Type of deposit account
         accountName:
           type: string
@@ -153,7 +138,10 @@ components:
           description: ABA routing number
         status:
           type: string
-          enum: [ACTIVE, INACTIVE, CLOSED]
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - CLOSED
           description: Current account status
         currency:
           type: string
@@ -189,3 +177,21 @@ components:
           type: string
           format: date-time
           description: Timestamp of balance information
+    AccountListResponse:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        totalCount:
+          type: integer
+          description: Total number of accounts
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.truist.com/oauth2/token
+          scopes:
+            commercial.transactions:read: Read access to commercial transaction data

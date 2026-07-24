@@ -1,20 +1,17 @@
 openapi: 3.0.3
 info:
-  title: Truist Commercial Accounts API
-  description: >-
-    Provides programmatic access to commercial deposit account information, including
-    account balances, account details, and account summary data for commercial and
-    corporate clients. Supports treasury management integrations and ERP connectivity.
+  title: Truist Commercial Account Transactions Accounts Commercial Accounts API
+  description: Enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. Supports ERP integrations, cash flow reconciliation, and automated accounting workflows.
   version: 1.0.0
   contact:
     url: https://developer.truist.com/
   termsOfService: https://www.truist.com/about-truist/terms-conditions
 servers:
-  - url: https://api.truist.com/v1
-    description: Production
+- url: https://api.truist.com/v1
+  description: Production
 tags:
-  - name: Commercial Accounts
-    description: Commercial banking account operations
+- name: Commercial Accounts
+  description: Commercial banking account operations
 paths:
   /commercial/accounts:
     get:
@@ -22,23 +19,28 @@ paths:
       summary: List Commercial Accounts
       description: Retrieve a list of commercial deposit accounts for the authenticated organization.
       tags:
-        - Commercial Accounts
+      - Commercial Accounts
       security:
-        - OAuth2: [commercial.accounts:read]
+      - OAuth2:
+        - commercial.accounts:read
       parameters:
-        - name: customerId
-          in: query
-          required: false
-          schema:
-            type: string
-          description: Filter accounts by customer/organization identifier
-        - name: accountType
-          in: query
-          required: false
-          schema:
-            type: string
-            enum: [CHECKING, SAVINGS, MONEY_MARKET, SWEEP]
-          description: Filter by account type
+      - name: customerId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter accounts by customer/organization identifier
+      - name: accountType
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - CHECKING
+          - SAVINGS
+          - MONEY_MARKET
+          - SWEEP
+        description: Filter by account type
       responses:
         '200':
           description: Commercial accounts retrieved successfully
@@ -56,16 +58,17 @@ paths:
       summary: Get Commercial Account
       description: Retrieve details for a specific commercial deposit account.
       tags:
-        - Commercial Accounts
+      - Commercial Accounts
       security:
-        - OAuth2: [commercial.accounts:read]
+      - OAuth2:
+        - commercial.accounts:read
       parameters:
-        - name: accountId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique account identifier
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique account identifier
       responses:
         '200':
           description: Commercial account retrieved successfully
@@ -83,23 +86,24 @@ paths:
       summary: Get Commercial Account Balances
       description: Retrieve current and available balances for a commercial deposit account, including collected and uncollected balances.
       tags:
-        - Commercial Accounts
+      - Commercial Accounts
       security:
-        - OAuth2: [commercial.accounts:read]
+      - OAuth2:
+        - commercial.accounts:read
       parameters:
-        - name: accountId
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique account identifier
-        - name: asOfDate
-          in: query
-          required: false
-          schema:
-            type: string
-            format: date
-          description: Balance as of date (defaults to current day)
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique account identifier
+      - name: asOfDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Balance as of date (defaults to current day)
       responses:
         '200':
           description: Commercial account balances retrieved successfully
@@ -117,23 +121,24 @@ paths:
       summary: Get Commercial Account Summary
       description: Retrieve a consolidated balance summary across all commercial accounts for the organization.
       tags:
-        - Commercial Accounts
+      - Commercial Accounts
       security:
-        - OAuth2: [commercial.accounts:read]
+      - OAuth2:
+        - commercial.accounts:read
       parameters:
-        - name: customerId
-          in: query
-          required: false
-          schema:
-            type: string
-          description: Customer/organization identifier
-        - name: currency
-          in: query
-          required: false
-          schema:
-            type: string
-            default: USD
-          description: Currency for balance aggregation
+      - name: customerId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Customer/organization identifier
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+          default: USD
+        description: Currency for balance aggregation
       responses:
         '200':
           description: Account summary retrieved successfully
@@ -144,15 +149,26 @@ paths:
         '401':
           description: Unauthorized
 components:
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://api.truist.com/oauth2/token
-          scopes:
-            commercial.accounts:read: Read access to commercial account information
   schemas:
+    CommercialAccountSummary:
+      type: object
+      properties:
+        customerId:
+          type: string
+        totalLedgerBalance:
+          type: number
+          format: double
+        totalAvailableBalance:
+          type: number
+          format: double
+        accountCount:
+          type: integer
+        currency:
+          type: string
+          default: USD
+        asOfDateTime:
+          type: string
+          format: date-time
     CommercialAccountListResponse:
       type: object
       properties:
@@ -162,36 +178,6 @@ components:
             $ref: '#/components/schemas/CommercialAccount'
         totalCount:
           type: integer
-    CommercialAccount:
-      type: object
-      properties:
-        accountId:
-          type: string
-          description: Unique account identifier
-        accountNumber:
-          type: string
-          description: Masked account number
-        accountType:
-          type: string
-          enum: [CHECKING, SAVINGS, MONEY_MARKET, SWEEP]
-        accountName:
-          type: string
-          description: Account name or description
-        routingNumber:
-          type: string
-          description: ABA routing number
-        status:
-          type: string
-          enum: [ACTIVE, INACTIVE, CLOSED]
-        currency:
-          type: string
-          default: USD
-        openedDate:
-          type: string
-          format: date
-        customerId:
-          type: string
-          description: Associated customer/organization identifier
     CommercialAccountBalances:
       type: object
       properties:
@@ -227,22 +213,48 @@ components:
         asOfDateTime:
           type: string
           format: date-time
-    CommercialAccountSummary:
+    CommercialAccount:
       type: object
       properties:
-        customerId:
+        accountId:
           type: string
-        totalLedgerBalance:
-          type: number
-          format: double
-        totalAvailableBalance:
-          type: number
-          format: double
-        accountCount:
-          type: integer
+          description: Unique account identifier
+        accountNumber:
+          type: string
+          description: Masked account number
+        accountType:
+          type: string
+          enum:
+          - CHECKING
+          - SAVINGS
+          - MONEY_MARKET
+          - SWEEP
+        accountName:
+          type: string
+          description: Account name or description
+        routingNumber:
+          type: string
+          description: ABA routing number
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - CLOSED
         currency:
           type: string
           default: USD
-        asOfDateTime:
+        openedDate:
           type: string
-          format: date-time
+          format: date
+        customerId:
+          type: string
+          description: Associated customer/organization identifier
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.truist.com/oauth2/token
+          scopes:
+            commercial.transactions:read: Read access to commercial transaction data
