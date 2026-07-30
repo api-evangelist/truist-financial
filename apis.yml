@@ -10,7 +10,20 @@ description: >-
   services, with OAuth 2.0 and API key authentication. Truist launched FDX-compliant open banking in 2026, partnering
   with Mastercard and Plaid to enable secure, tokenized financial data sharing for consumers and businesses.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Requires approval
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/truist-financial.png
 tags:
   - Banking
   - Financial Services
@@ -26,197 +39,201 @@ created: '2026-03-21'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: truist-financial:truist-personal-small-business-accounts-api
-    name: Truist Personal and Small Business Accounts API
-    tags:
-      - Accounts
-      - Personal Banking
-      - Small Business
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://developer.truist.com/api/personal-and-small-business-accounts/overview
-    properties:
-      - url: https://developer.truist.com/api/personal-and-small-business-accounts/overview
-        type: Documentation
-      - url: https://developer.truist.com/api/personal-and-small-business-accounts/documentation
-        type: Documentation
-      - url: https://developer.truist.com/api/working-with-truist
-        type: Authentication
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-personal-small-business-accounts-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Truist Personal and Small Business Accounts API provides programmatic access to consumer and small business
-      deposit account information, including account details, balances, account types, and ownership information.
-      Developers can retrieve account lists for authenticated clients, access individual account details, and retrieve
-      balance information for checking, savings, and money market accounts. The API supports OAuth 2.0 authentication
-      and is designed for fintech integrations, account aggregation platforms, and personal finance management
-      applications.
-  - aid: truist-financial:truist-personal-small-business-transactions-api
-    name: Truist Personal and Small Business Transactions API
-    tags:
-      - Transactions
-      - Personal Banking
-      - Small Business
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://developer.truist.com/api/personal-and-small-business-transactions/overview
-    properties:
-      - url: https://developer.truist.com/api/personal-and-small-business-transactions/overview
-        type: Documentation
-      - url: https://developer.truist.com/api/working-with-truist
-        type: Authentication
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-personal-small-business-transactions-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Truist Personal and Small Business Transactions API enables retrieval of transaction history for personal and
-      small business accounts. Developers can access posted and pending transactions, filter by date range, and retrieve
-      transaction details including merchant information, amounts, and transaction categories. The API supports OAuth
-      2.0 authentication and is suitable for personal finance management tools, accounting integrations, and expense
-      tracking applications.
-  - aid: truist-financial:truist-personal-small-business-client-contact-api
-    name: Truist Personal and Small Business Client Contact API
-    tags:
-      - Client Management
-      - Personal Banking
-      - Small Business
-      - Contact Information
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://developer.truist.com/api/personal-and-small-business-client-contact/overview
-    properties:
-      - url: https://developer.truist.com/api/personal-and-small-business-client-contact/overview
-        type: Documentation
-      - url: https://developer.truist.com/api/working-with-truist
-        type: Authentication
-    description: >-
-      The Truist Personal and Small Business Client Contact API provides access to client contact information associated
-      with personal and small business accounts, including address, phone number, and email address data. This API
-      enables authorized applications to retrieve and manage contact details for authenticated Truist clients,
-      supporting CRM integrations and account management workflows.
-  - aid: truist-financial:truist-commercial-accounts-api
-    name: Truist Commercial Accounts API
-    tags:
-      - Accounts
-      - Commercial Banking
-      - Treasury
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://developer.truist.com/api/commercial-accounts/overview
-    properties:
-      - url: https://developer.truist.com/api/commercial-accounts/overview
-        type: Documentation
-      - url: https://developer.truist.com/api/commercial-accounts/documentation
-        type: Documentation
-      - url: https://developer.truist.com/api/working-with-truist
-        type: Authentication
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-commercial-accounts-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Truist Commercial Accounts API provides programmatic access to commercial deposit account information,
-      including account balances, account details, and account summary data for commercial and corporate clients. The
-      API supports treasury management integrations, ERP system connectivity, and cash management platforms. It enables
-      real-time balance reporting, account hierarchy retrieval, and integration with commercial banking operations.
-      OAuth 2.0 and API key authentication are supported.
-  - aid: truist-financial:truist-commercial-account-transactions-api
-    name: Truist Commercial Account Transactions API
-    tags:
-      - Transactions
-      - Commercial Banking
-      - Treasury
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://developer.truist.com/api/commercial-account-transactions/overview
-    properties:
-      - url: https://developer.truist.com/api/commercial-account-transactions/overview
-        type: Documentation
-      - url: https://developer.truist.com/api/commercial-account-transactions/documentation
-        type: Documentation
-      - url: https://developer.truist.com/api/working-with-truist
-        type: Authentication
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/openapi/truist-commercial-account-transactions-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Truist Commercial Account Transactions API enables programmatic retrieval of commercial account transaction
-      data including ACH credits and debits, wire transfers, checks, and other payment types. The API supports filtering
-      by date range and transaction type, enabling ERP integrations, cash flow reconciliation, and automated accounting
-      workflows. It is designed for treasury teams, corporate finance applications, and commercial banking integrations.
-  - aid: truist-financial:truist-commercial-account-transaction-image-api
-    name: Truist Commercial Account Transaction Image API
-    tags:
-      - Transactions
-      - Check Images
-      - Commercial Banking
-      - Documents
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://developer.truist.com/api/commercial-account-transaction-image/overview
-    properties:
-      - url: https://developer.truist.com/api/commercial-account-transaction-image/overview
-        type: Documentation
-      - url: https://developer.truist.com/api/working-with-truist
-        type: Authentication
-    description: >-
-      The Truist Commercial Account Transaction Image API provides access to check images and transaction document
-      images associated with commercial account transactions. Developers can retrieve front and back images of checks,
-      deposit slips, and other payment documents by transaction reference. The API supports document archiving, audit
-      workflows, and automated reconciliation integrations for commercial banking clients.
-  - aid: truist-financial:truist-open-banking-api
-    name: Truist Open Banking API
-    tags:
-      - Open Banking
-      - FDX
-      - Financial Data Exchange
-      - Accounts
-      - Banking
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://truist-1132.my.site.com/truist/s/
-    properties:
-      - url: https://truist-1132.my.site.com/truist/s/
-        type: Portal
-      - url: https://truist-1132.my.site.com/truist/s/subscriptions
-        type: Documentation
-      - url: https://www.prnewswire.com/news-releases/truist-launches-secure-open-banking-experience-302685248.html
-        type: Announcement
-    description: >-
-      The Truist Open Banking API provides secure, FDX-compliant (Financial Data Exchange) access to consumer and small
-      business financial data, enabling authorized fintech applications to retrieve account balances, transaction
-      history, and payment information with client consent. Launched in February 2026 in partnership with Mastercard's
-      open finance platform, the API replaces credential sharing with tokenized, permission-based access. Truist
-      expanded the program through a Plaid data-access agreement in March 2026, enabling clients to manage and revoke
-      third-party data access through a centralized consent portal. The API supports account information, transaction
-      data, investment data, and loan data per FDX standards.
-  - aid: truist-financial:truist-association-services-api
-    name: Truist Association Services API
-    tags:
-      - Association Services
-      - Community Banking
-      - Banking
-      - Payments
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.truist.com/v1
-    humanURL: https://developer.truist.com/categories/association-services
-    properties:
-      - url: https://developer.truist.com/categories/association-services
-        type: Documentation
-      - url: https://developer.truist.com/api/working-with-truist
-        type: Authentication
-    description: >-
-      The Truist Association Services API provides banking and payment capabilities tailored for associations,
-      non-profit organizations, and community groups. The API supports dues collection, payment processing, member
-      account management, and reporting for trade associations, homeowners associations, and membership organizations
-      that bank with Truist. It enables integration of banking workflows into association management platforms and
-      member portals.
+- aid: truist-financial:truist-personal-small-business-client-contact-api
+  name: Truist Personal and Small Business Client Contact API
+  tags:
+  - Client Management
+  - Personal Banking
+  - Small Business
+  - Contact Information
+  - Banking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.truist.com/v1
+  humanURL: https://developer.truist.com/api/personal-and-small-business-client-contact/overview
+  properties:
+  - url: https://developer.truist.com/api/personal-and-small-business-client-contact/overview
+    type: Documentation
+  - url: https://developer.truist.com/api/working-with-truist
+    type: Authentication
+  description: >-
+    The Truist Personal and Small Business Client Contact API provides access to client contact information
+    associated with personal and small business accounts, including address, phone number, and email address
+    data. This API enables authorized applications to retrieve and manage contact details for authenticated
+    Truist clients, supporting CRM integrations and account management workflows.
+- aid: truist-financial:truist-commercial-account-transaction-image-api
+  name: Truist Commercial Account Transaction Image API
+  tags:
+  - Transactions
+  - Check Images
+  - Commercial Banking
+  - Documents
+  - Banking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.truist.com/v1
+  humanURL: https://developer.truist.com/api/commercial-account-transaction-image/overview
+  properties:
+  - url: https://developer.truist.com/api/commercial-account-transaction-image/overview
+    type: Documentation
+  - url: https://developer.truist.com/api/working-with-truist
+    type: Authentication
+  description: >-
+    The Truist Commercial Account Transaction Image API provides access to check images and transaction
+    document images associated with commercial account transactions. Developers can retrieve front and
+    back images of checks, deposit slips, and other payment documents by transaction reference. The API
+    supports document archiving, audit workflows, and automated reconciliation integrations for commercial
+    banking clients.
+- aid: truist-financial:truist-open-banking-api
+  name: Truist Open Banking API
+  tags:
+  - Open Banking
+  - FDX
+  - Financial Data Exchange
+  - Accounts
+  - Banking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.truist.com/v1
+  humanURL: https://truist-1132.my.site.com/truist/s/
+  properties:
+  - url: https://truist-1132.my.site.com/truist/s/
+    type: Portal
+  - url: https://truist-1132.my.site.com/truist/s/subscriptions
+    type: Documentation
+  - url: >-
+      https://www.prnewswire.com/news-releases/truist-launches-secure-open-banking-experience-302685248.html
+    type: Announcement
+  description: >-
+    The Truist Open Banking API provides secure, FDX-compliant (Financial Data Exchange) access to consumer
+    and small business financial data, enabling authorized fintech applications to retrieve account balances,
+    transaction history, and payment information with client consent. Launched in February 2026 in partnership
+    with Mastercard's open finance platform, the API replaces credential sharing with tokenized, permission-based
+    access. Truist expanded the program through a Plaid data-access agreement in March 2026, enabling
+    clients to manage and revoke third-party data access through a centralized consent portal. The API
+    supports account information, transaction data, investment data, and loan data per FDX standards.
+- aid: truist-financial:truist-association-services-api
+  name: Truist Association Services API
+  tags:
+  - Association Services
+  - Community Banking
+  - Banking
+  - Payments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.truist.com/v1
+  humanURL: https://developer.truist.com/categories/association-services
+  properties:
+  - url: https://developer.truist.com/categories/association-services
+    type: Documentation
+  - url: https://developer.truist.com/api/working-with-truist
+    type: Authentication
+  description: >-
+    The Truist Association Services API provides banking and payment capabilities tailored for associations,
+    non-profit organizations, and community groups. The API supports dues collection, payment processing,
+    member account management, and reporting for trade associations, homeowners associations, and membership
+    organizations that bank with Truist. It enables integration of banking workflows into association
+    management platforms and member portals.
+- aid: truist-financial:truist-financial-accounts-api
+  name: Truist Financial Accounts API
+  description: Personal and small business account operations
+  humanURL: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  baseURL: https://api.truist.com/v1
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/truist-financial-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/documentation
+  - type: Authentication
+    url: https://developer.truist.com/api/working-with-truist
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/documentation
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/documentation
+- aid: truist-financial:truist-financial-commercial-accounts-api
+  name: Truist Financial Commercial Accounts API
+  description: Commercial banking account operations
+  humanURL: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  baseURL: https://api.truist.com/v1
+  tags:
+  - Commercial Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/truist-financial-commercial-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/documentation
+  - type: Authentication
+    url: https://developer.truist.com/api/working-with-truist
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/documentation
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/documentation
+- aid: truist-financial:truist-financial-commercial-transactions-api
+  name: Truist Financial Commercial Transactions API
+  description: Commercial account transaction operations
+  humanURL: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  baseURL: https://api.truist.com/v1
+  tags:
+  - Commercial Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/truist-financial-commercial-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/documentation
+  - type: Authentication
+    url: https://developer.truist.com/api/working-with-truist
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/documentation
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/documentation
+- aid: truist-financial:truist-financial-transactions-api
+  name: Truist Financial Transactions API
+  description: Personal and small business transaction operations
+  humanURL: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  baseURL: https://api.truist.com/v1
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/truist-financial-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-accounts/documentation
+  - type: Authentication
+    url: https://developer.truist.com/api/working-with-truist
+  - type: Documentation
+    url: https://developer.truist.com/api/personal-and-small-business-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-accounts/documentation
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/overview
+  - type: Documentation
+    url: https://developer.truist.com/api/commercial-account-transactions/documentation
 common:
   - type: AgenticAccess
     url: agentic-access/truist-financial-agentic-access.yml
