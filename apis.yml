@@ -37,7 +37,7 @@ tags:
 access: 3rd-Party
 created: '2026-03-21'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: truist-financial:truist-personal-small-business-client-contact-api
   name: Truist Personal and Small Business Client Contact API
