@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Truist Commercial Account Transactions Accounts Commercial Transactions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commercial Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Commercial Account Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.truist.com/v1/commercial/accounts/:accountId/transactions",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "Unique account identifier"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date for transaction retrieval (YYYY-MM-DD)"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "End date for transaction retrieval (YYYY-MM-DD)"
+              },
+              {
+                "name": "transactionType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transaction type"
+              },
+              {
+                "name": "debitCreditIndicator",
+                "value": "",
+                "type": "query",
+                "description": "Filter by debit or credit"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of transactions to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.truist.com/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve commercial account transactions including ACH, wires, and checks with optional filtering by date range and transaction type."
+        },
+        {
+          "info": {
+            "name": "Get Commercial Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.truist.com/v1/commercial/accounts/:accountId/transactions/:transactionId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "Unique account identifier"
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique transaction identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.truist.com/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve details for a specific commercial account transaction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Truist Commercial Account Transactions Accounts Commercial Accounts API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commercial Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Commercial Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.truist.com/v1/commercial/accounts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter accounts by customer/organization identifier"
+              },
+              {
+                "name": "accountType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by account type"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.truist.com/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of commercial deposit accounts for the authenticated organization."
+        },
+        {
+          "info": {
+            "name": "Get Commercial Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.truist.com/v1/commercial/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "Unique account identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.truist.com/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve details for a specific commercial deposit account."
+        },
+        {
+          "info": {
+            "name": "Get Commercial Account Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.truist.com/v1/commercial/accounts/:accountId/balances",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "Unique account identifier"
+              },
+              {
+                "name": "asOfDate",
+                "value": "",
+                "type": "query",
+                "description": "Balance as of date (defaults to current day)"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.truist.com/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve current and available balances for a commercial deposit account, including collected and uncollected balances."
+        },
+        {
+          "info": {
+            "name": "Get Commercial Account Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.truist.com/v1/commercial/accounts/summary",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "query",
+                "description": "Customer/organization identifier"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency for balance aggregation"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.truist.com/oauth2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a consolidated balance summary across all commercial accounts for the organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

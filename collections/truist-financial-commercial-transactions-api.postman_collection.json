@@ -1,0 +1,683 @@
+{
+  "item": [
+    {
+      "id": "7bdd9895-484e-4804-a2e2-d1703d02a5fc",
+      "name": "Commercial Transactions",
+      "description": {
+        "content": "Commercial account transaction operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f895dc65-ec70-4e3e-8042-7514248e1b30",
+          "name": "List Commercial Account Transactions",
+          "request": {
+            "name": "List Commercial Account Transactions",
+            "description": {
+              "content": "Retrieve commercial account transactions including ACH, wires, and checks with optional filtering by date range and transaction type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commercial",
+                "accounts",
+                ":accountId",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fromDate",
+                  "value": "<date>",
+                  "description": "Start date for transaction retrieval (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "toDate",
+                  "value": "<date>",
+                  "description": "End date for transaction retrieval (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "transactionType",
+                  "value": "<string>",
+                  "description": "Filter by transaction type"
+                },
+                {
+                  "disabled": false,
+                  "key": "debitCreditIndicator",
+                  "value": "<string>",
+                  "description": "Filter by debit or credit"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of transactions to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) Unique account identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "commercial.transactions:read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.truist.com/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1592a4f1-9a5b-4a88-8136-232fe882fdf3",
+              "name": "Commercial transactions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "transactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debitCreditIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"transactionId\": \"string\",\n      \"accountId\": \"string\",\n      \"transactionDate\": \"1998-10-13\",\n      \"postedDate\": \"1975-11-14\",\n      \"amount\": 7104.6893745026355,\n      \"currency\": \"USD\",\n      \"debitCreditIndicator\": \"DEBIT\",\n      \"transactionType\": \"CHECK\",\n      \"bankReferenceNumber\": \"string\",\n      \"customerReferenceNumber\": \"string\",\n      \"description\": \"string\",\n      \"originatorName\": \"string\",\n      \"receiverName\": \"string\",\n      \"checkNumber\": \"string\",\n      \"achTraceNumber\": \"string\",\n      \"wireReferenceNumber\": \"string\",\n      \"runningBalance\": 5480.245733304498\n    },\n    {\n      \"transactionId\": \"string\",\n      \"accountId\": \"string\",\n      \"transactionDate\": \"1995-12-12\",\n      \"postedDate\": \"2013-06-22\",\n      \"amount\": 8981.468565395295,\n      \"currency\": \"USD\",\n      \"debitCreditIndicator\": \"CREDIT\",\n      \"transactionType\": \"INTEREST\",\n      \"bankReferenceNumber\": \"string\",\n      \"customerReferenceNumber\": \"string\",\n      \"description\": \"string\",\n      \"originatorName\": \"string\",\n      \"receiverName\": \"string\",\n      \"checkNumber\": \"string\",\n      \"achTraceNumber\": \"string\",\n      \"wireReferenceNumber\": \"string\",\n      \"runningBalance\": 2817.959473215763\n    }\n  ],\n  \"totalCount\": 110,\n  \"pageSize\": 7793,\n  \"offset\": 7321\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc660c61-68a3-4f08-8ecf-793d058a06ec",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "transactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debitCreditIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9104264f-a0dd-428d-b1c7-03ccb78e45c9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "transactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debitCreditIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f815db86-3e68-4886-9ea5-660cbeab1002",
+              "name": "Account not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fromDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "transactionType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debitCreditIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b07b9d6-067a-4af9-a626-97b60813a8ed",
+          "name": "Get Commercial Transaction",
+          "request": {
+            "name": "Get Commercial Transaction",
+            "description": {
+              "content": "Retrieve details for a specific commercial account transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commercial",
+                "accounts",
+                ":accountId",
+                "transactions",
+                ":transactionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) Unique account identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionId",
+                  "description": "(Required) Unique transaction identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "commercial.transactions:read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.truist.com/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "04ea39ec-65da-41a0-8b80-2726207d8fca",
+              "name": "Commercial transaction retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) Unique transaction identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactionId\": \"string\",\n  \"accountId\": \"string\",\n  \"transactionDate\": \"1954-01-22\",\n  \"postedDate\": \"2015-11-27\",\n  \"amount\": 5543.569149168562,\n  \"currency\": \"USD\",\n  \"debitCreditIndicator\": \"DEBIT\",\n  \"transactionType\": \"INTEREST\",\n  \"bankReferenceNumber\": \"string\",\n  \"customerReferenceNumber\": \"string\",\n  \"description\": \"string\",\n  \"originatorName\": \"string\",\n  \"receiverName\": \"string\",\n  \"checkNumber\": \"string\",\n  \"achTraceNumber\": \"string\",\n  \"wireReferenceNumber\": \"string\",\n  \"runningBalance\": 8106.0427361071\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b356b3e-fe0c-449b-b7b1-ca66801ffb2a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) Unique transaction identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "630a138b-e170-4140-a594-2a806076d384",
+              "name": "Transaction not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) Unique transaction identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.truist.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "81cb8252-9ea5-4173-81bc-d21f3bd1a55a",
+    "name": "Truist Commercial Account Transactions Accounts Commercial Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. Supports ERP integrations, cash flow reconciliation, and automated accounting workflows.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,868 @@
+{
+  "item": [
+    {
+      "id": "967625a9-eaeb-4461-a1e1-1682d1c0b6bc",
+      "name": "Commercial Accounts",
+      "description": {
+        "content": "Commercial banking account operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e54cebe7-e73d-44f8-a756-5062df6689c5",
+          "name": "List Commercial Accounts",
+          "request": {
+            "name": "List Commercial Accounts",
+            "description": {
+              "content": "Retrieve a list of commercial deposit accounts for the authenticated organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commercial",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customerId",
+                  "value": "<string>",
+                  "description": "Filter accounts by customer/organization identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "accountType",
+                  "value": "<string>",
+                  "description": "Filter by account type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "commercial.transactions:read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.truist.com/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c1952fb4-5fdb-44dd-9568-33604ab70de9",
+              "name": "Commercial accounts retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"accountId\": \"string\",\n      \"accountNumber\": \"string\",\n      \"accountType\": \"SWEEP\",\n      \"accountName\": \"string\",\n      \"routingNumber\": \"string\",\n      \"status\": \"INACTIVE\",\n      \"currency\": \"USD\",\n      \"openedDate\": \"2011-04-16\",\n      \"customerId\": \"string\"\n    },\n    {\n      \"accountId\": \"string\",\n      \"accountNumber\": \"string\",\n      \"accountType\": \"SWEEP\",\n      \"accountName\": \"string\",\n      \"routingNumber\": \"string\",\n      \"status\": \"CLOSED\",\n      \"currency\": \"USD\",\n      \"openedDate\": \"1951-04-25\",\n      \"customerId\": \"string\"\n    }\n  ],\n  \"totalCount\": 448\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf2422f9-ec4a-44c9-b154-ecff6460e2e9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5eb3de81-6269-4a4d-bfd6-d8b6fc768961",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0122fc72-4c2b-4e48-8d26-50fa87ad31e6",
+          "name": "Get Commercial Account",
+          "request": {
+            "name": "Get Commercial Account",
+            "description": {
+              "content": "Retrieve details for a specific commercial deposit account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commercial",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) Unique account identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "commercial.transactions:read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.truist.com/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2a8205a3-f4a6-414a-b3b0-22c112bc4938",
+              "name": "Commercial account retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"accountNumber\": \"string\",\n  \"accountType\": \"CHECKING\",\n  \"accountName\": \"string\",\n  \"routingNumber\": \"string\",\n  \"status\": \"ACTIVE\",\n  \"currency\": \"USD\",\n  \"openedDate\": \"2006-12-01\",\n  \"customerId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70998d11-3a7a-482b-bd4d-903aa0fe6aa5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6aa6377e-fee2-477b-a0d6-2f7b6c359edb",
+              "name": "Account not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f75f5881-119d-4971-b308-c6e3d71f0f99",
+          "name": "Get Commercial Account Balances",
+          "request": {
+            "name": "Get Commercial Account Balances",
+            "description": {
+              "content": "Retrieve current and available balances for a commercial deposit account, including collected and uncollected balances.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commercial",
+                "accounts",
+                ":accountId",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "asOfDate",
+                  "value": "<date>",
+                  "description": "Balance as of date (defaults to current day)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) Unique account identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "commercial.transactions:read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.truist.com/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8312194f-49c8-4931-bb83-9e52beeb820a",
+              "name": "Commercial account balances retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"ledgerBalance\": 8511.91753354028,\n  \"availableBalance\": 7337.717893480186,\n  \"collectedBalance\": 3698.262793337399,\n  \"uncollectedBalance\": 5486.478308231595,\n  \"oneDayFloat\": 2886.90940796575,\n  \"twoDayFloat\": 9819.815099067333,\n  \"currency\": \"USD\",\n  \"asOfDateTime\": \"1980-11-01T13:01:35.036Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83625018-260d-42c8-84c5-a7a47b02bd3a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c886d68-6af9-4917-8384-8ff29be2edba",
+              "name": "Account not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    ":accountId",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asOfDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique account identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "712e959b-a7cb-4fae-98e7-fc161bd49f75",
+          "name": "Get Commercial Account Summary",
+          "request": {
+            "name": "Get Commercial Account Summary",
+            "description": {
+              "content": "Retrieve a consolidated balance summary across all commercial accounts for the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commercial",
+                "accounts",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customerId",
+                  "value": "<string>",
+                  "description": "Customer/organization identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "USD",
+                  "description": "Currency for balance aggregation"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "commercial.transactions:read"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.truist.com/oauth2/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f30a5256-5c64-43d8-93f0-28def4686dfb",
+              "name": "Account summary retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customerId\": \"string\",\n  \"totalLedgerBalance\": 1672.9527260283994,\n  \"totalAvailableBalance\": 2455.3922668650084,\n  \"accountCount\": 9470,\n  \"currency\": \"USD\",\n  \"asOfDateTime\": \"2012-06-22T02:29:04.365Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53203d5a-3545-4bc3-81a8-e9ed156a6b72",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commercial",
+                    "accounts",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "USD"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.truist.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "31caf2d3-0bf8-4e7e-88b1-5a1603699a42",
+    "name": "Truist Commercial Account Transactions Accounts Commercial Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. Supports ERP integrations, cash flow reconciliation, and automated accounting workflows.",
+      "type": "text/plain"
+    }
+  }
+}
