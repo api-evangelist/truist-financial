@@ -1,5 +1,7 @@
 aid: truist-financial
 url: https://raw.githubusercontent.com/api-evangelist/truist-financial/refs/heads/main/apis.yml
+x-api-posture: partner-gated
+x-api-posture-basis: observed
 name: Truist Financial
 description: >-
   Truist Financial Corporation is a purpose-driven financial services company headquartered in Charlotte, North
