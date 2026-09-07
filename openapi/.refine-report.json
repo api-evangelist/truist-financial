@@ -15,6 +15,12 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "truist-financial-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "truist-financial-commercial-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "truist-financial-commercial-transactions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "truist-financial-transactions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
