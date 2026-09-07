@@ -1,0 +1,36 @@
+generated: '2026-07-23'
+method: searched
+source: >-
+  https://developer.truist.com/api/working-with-truist and
+  https://truist-1132.my.site.com/truist/s/ ; Truist Developer Center statements
+  that its Open Banking / FDX API is live over tokenized (OAuth) connections.
+  No public OpenAPI is published, so standards are asserted from documented
+  program claims, not derived from a spec.
+standards:
+  - id: fdx
+    name: Financial Data Exchange (FDX) API
+    conforms: true
+    evidence: >-
+      Truist Developer Center and Open Banking API Developer Portal state the
+      FDX API is live for consumer-permissioned data sharing; description
+      records FDX-aligned tokenized connections replacing credential sharing.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: true
+    evidence: >-
+      Consumer data access uses tokenized (OAuth-based) connections rather than
+      credential sharing, per the Open Banking data-access model.
+  - id: cfpb-1033
+    name: CFPB Section 1033 (Personal Financial Data Rights)
+    conforms: partial
+    evidence: >-
+      Truist states it monitors and complies with evolving CFPB Section 1033
+      personal-financial-data rules; rule is phasing in.
+  - id: fapi
+    name: Financial-grade API (FAPI)
+    conforms: unknown
+    evidence: No public spec or documented FAPI profile claim located.
+  - id: rfc9457-problem-details
+    name: RFC 9457 Problem Details
+    conforms: unknown
+    evidence: No public OpenAPI available to confirm error envelope.

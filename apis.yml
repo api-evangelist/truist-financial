@@ -275,6 +275,22 @@ apis:
   - type: Documentation
     url: https://developer.truist.com/api/commercial-account-transactions/documentation
 common:
+  - type: DeveloperPortal
+    url: https://developer.truist.com/
+  - type: Documentation
+    url: https://developer.truist.com/api/working-with-truist
+  - type: APIReference
+    url: https://developer.truist.com/api/view-api
+  - type: SignUp
+    url: https://developer.truist.com/signup
+  - type: Login
+    url: https://developer.truist.com/ui/login/1000
+  - type: Support
+    url: https://www.truist.com/support
+  - type: LLMsTxt
+    url: llms/truist-financial-llms.txt
+  - type: Conformance
+    url: conformance/truist-financial-conformance.yml
   - type: AgenticAccess
     url: agentic-access/truist-financial-agentic-access.yml
   - type: DomainSecurity
@@ -338,5 +354,3 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-x-parent: truist
-x-relationship: product

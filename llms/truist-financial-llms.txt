@@ -1,0 +1,26 @@
+# Truist
+
+> Truist Financial Corporation is a U.S. bank holding company (Charlotte, NC), formed from the 2019 merger of BB&T and SunTrust. On the API side it runs a first-party Truist Developer Center (developer.truist.com) publishing registration-gated Open Banking APIs in a sandbox that returns mock data (personal and small-business accounts, balances, transactions, and credit-transfer payments), plus a separate Truist Open Banking API Developer Portal for FDX-aligned, consumer-permissioned data sharing. Most third-party data access is delivered through FDX-aligned tokenized connections and aggregator partnerships (notably Plaid) rather than an open first-party production API.
+
+## APIs
+
+- [Truist Personal and Small Business Accounts API](https://developer.truist.com/api/personal-and-small-business-accounts/overview): Open Banking API covering personal and small-business account information, balances, and transaction data. Documented in a registration-gated sandbox returning mock demo responses; no downloadable OpenAPI/Swagger is published publicly.
+- [Truist Open Banking Data Access (FDX-aligned)](https://truist-1132.my.site.com/truist/s/): Consumer-permissioned data-sharing surface delivered through FDX-aligned, tokenized connections (including a Plaid data-access partnership) that replace credential sharing.
+
+## Docs
+
+- [Truist Developer Center](https://developer.truist.com/): First-party developer portal home.
+- [Working With Truist](https://developer.truist.com/api/working-with-truist): Getting-started and onboarding guidance for the developer program.
+- [View API](https://developer.truist.com/api/view-api): API reference surface for the registration-gated sandbox.
+- [Truist Open Banking API Developer Portal](https://truist-1132.my.site.com/truist/s/): Consumer-permissioned / FDX data-access portal.
+- [Register (Open Banking Portal)](https://truist-1132.my.site.com/truist/s/register-truist): Registration for the Open Banking data-access portal.
+
+## Access
+
+- [Sign Up](https://developer.truist.com/signup): Register for the Truist Developer Center.
+- [Sign In](https://developer.truist.com/ui/login/1000): Developer Center login.
+
+## Notes
+
+- The developer.truist.com site is a client-rendered (Angular) single-page app; it returns a 200 HTML shell for arbitrary paths, so no machine-readable OpenAPI/Swagger, `/.well-known/`, or `/llms.txt` document is actually served there.
+- Standards posture: FDX-aligned data sharing with OAuth2 tokenized connections; production consumer data access is largely via aggregators (Plaid, BankSync). Truist states it monitors and complies with evolving CFPB Section 1033 personal-financial-data rules.
