@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Truist Commercial Account Transactions Accounts Commercial Transactions API
+  title: Truist Commercial Account Transactions Commercial…
   description: Enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. Supports ERP integrations, cash flow reconciliation, and automated accounting workflows.
   version: 1.0.0
   contact:

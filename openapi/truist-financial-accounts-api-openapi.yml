@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Truist Commercial Account Transactions Accounts API
-  description: Enables programmatic retrieval of commercial account transaction data including ACH credits and debits, wire transfers, checks, and other payment types. Supports ERP integrations, cash flow reconciliation, and automated accounting workflows.
+  title: Truist Personal and Small Business Accounts API
+  description: Provides programmatic access to consumer and small business deposit account information, including account details, balances, account types, and ownership information for authenticated Truist clients.
   version: 1.0.0
   contact:
     url: https://developer.truist.com/
@@ -113,6 +113,32 @@ paths:
           description: Account not found
 components:
   schemas:
+    AccountBalances:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Unique account identifier
+        currentBalance:
+          type: number
+          format: double
+          description: Current ledger balance
+        availableBalance:
+          type: number
+          format: double
+          description: Available balance for transactions
+        pendingBalance:
+          type: number
+          format: double
+          description: Balance of pending transactions
+        currency:
+          type: string
+          default: USD
+          description: Currency code
+        asOfDateTime:
+          type: string
+          format: date-time
+          description: Timestamp of balance information
     Account:
       type: object
       properties:
@@ -161,37 +187,12 @@ components:
         totalCount:
           type: integer
           description: Total number of accounts
-    AccountBalances:
-      type: object
-      properties:
-        accountId:
-          type: string
-          description: Unique account identifier
-        currentBalance:
-          type: number
-          format: double
-          description: Current ledger balance
-        availableBalance:
-          type: number
-          format: double
-          description: Available balance for transactions
-        pendingBalance:
-          type: number
-          format: double
-          description: Balance of pending transactions
-        currency:
-          type: string
-          default: USD
-          description: Currency code
-        asOfDateTime:
-          type: string
-          format: date-time
-          description: Timestamp of balance information
   securitySchemes:
     OAuth2:
       type: oauth2
       flows:
-        clientCredentials:
+        authorizationCode:
+          authorizationUrl: https://api.truist.com/oauth2/authorize
           tokenUrl: https://api.truist.com/oauth2/token
           scopes:
-            commercial.transactions:read: Read access to commercial transaction data
+            accounts:read: Read access to account information

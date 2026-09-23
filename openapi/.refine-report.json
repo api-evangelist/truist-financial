@@ -1,26 +1,32 @@
 {
   "provider": "truist-financial",
   "sources": [
-    "truist-financial-accounts-api-openapi.yml",
-    "truist-financial-commercial-accounts-api-openapi.yml",
-    "truist-financial-commercial-transactions-api-openapi.yml",
-    "truist-financial-transactions-api-openapi.yml"
+    "_original/truist-commercial-account-transactions-openapi.yml",
+    "_original/truist-commercial-accounts-openapi.yml",
+    "_original/truist-personal-small-business-accounts-openapi.yml",
+    "_original/truist-personal-small-business-transactions-openapi.yml"
   ],
   "outputs": [
-    "truist-financial-accounts-api-openapi.yml",
-    "truist-financial-commercial-accounts-api-openapi.yml",
     "truist-financial-commercial-transactions-api-openapi.yml",
+    "truist-financial-commercial-accounts-api-openapi.yml",
+    "truist-financial-accounts-api-openapi.yml",
     "truist-financial-transactions-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "truist-financial-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "truist-financial-commercial-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "truist-financial-commercial-transactions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "truist-financial-transactions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "truist-commercial-account-transactions-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "truist-commercial-accounts-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "truist-personal-small-business-accounts-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "truist-personal-small-business-transactions-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "truist-financial-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "truist-financial-commercial-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "truist-financial-commercial-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "truist-financial-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
