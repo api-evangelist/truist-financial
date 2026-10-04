@@ -150,25 +150,6 @@ paths:
           description: Unauthorized
 components:
   schemas:
-    CommercialAccountSummary:
-      type: object
-      properties:
-        customerId:
-          type: string
-        totalLedgerBalance:
-          type: number
-          format: double
-        totalAvailableBalance:
-          type: number
-          format: double
-        accountCount:
-          type: integer
-        currency:
-          type: string
-          default: USD
-        asOfDateTime:
-          type: string
-          format: date-time
     CommercialAccountListResponse:
       type: object
       properties:
@@ -178,6 +159,41 @@ components:
             $ref: '#/components/schemas/CommercialAccount'
         totalCount:
           type: integer
+    CommercialAccountBalances:
+      type: object
+      properties:
+        accountId:
+          type: string
+        ledgerBalance:
+          type: number
+          format: double
+          description: Total ledger balance
+        availableBalance:
+          type: number
+          format: double
+          description: Available balance for disbursements
+        collectedBalance:
+          type: number
+          format: double
+          description: Collected (cleared) balance
+        uncollectedBalance:
+          type: number
+          format: double
+          description: Float/uncollected funds
+        oneDayFloat:
+          type: number
+          format: double
+          description: One-day float amount
+        twoDayFloat:
+          type: number
+          format: double
+          description: Two-day float amount
+        currency:
+          type: string
+          default: USD
+        asOfDateTime:
+          type: string
+          format: date-time
     CommercialAccount:
       type: object
       properties:
@@ -215,35 +231,19 @@ components:
         customerId:
           type: string
           description: Associated customer/organization identifier
-    CommercialAccountBalances:
+    CommercialAccountSummary:
       type: object
       properties:
-        accountId:
+        customerId:
           type: string
-        ledgerBalance:
+        totalLedgerBalance:
           type: number
           format: double
-          description: Total ledger balance
-        availableBalance:
+        totalAvailableBalance:
           type: number
           format: double
-          description: Available balance for disbursements
-        collectedBalance:
-          type: number
-          format: double
-          description: Collected (cleared) balance
-        uncollectedBalance:
-          type: number
-          format: double
-          description: Float/uncollected funds
-        oneDayFloat:
-          type: number
-          format: double
-          description: One-day float amount
-        twoDayFloat:
-          type: number
-          format: double
-          description: Two-day float amount
+        accountCount:
+          type: integer
         currency:
           type: string
           default: USD

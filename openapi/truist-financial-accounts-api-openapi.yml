@@ -113,16 +113,32 @@ paths:
           description: Account not found
 components:
   schemas:
-    AccountListResponse:
+    AccountBalances:
       type: object
       properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-        totalCount:
-          type: integer
-          description: Total number of accounts
+        accountId:
+          type: string
+          description: Unique account identifier
+        currentBalance:
+          type: number
+          format: double
+          description: Current ledger balance
+        availableBalance:
+          type: number
+          format: double
+          description: Available balance for transactions
+        pendingBalance:
+          type: number
+          format: double
+          description: Balance of pending transactions
+        currency:
+          type: string
+          default: USD
+          description: Currency code
+        asOfDateTime:
+          type: string
+          format: date-time
+          description: Timestamp of balance information
     Account:
       type: object
       properties:
@@ -161,32 +177,16 @@ components:
           type: string
           format: date
           description: Date the account was opened
-    AccountBalances:
+    AccountListResponse:
       type: object
       properties:
-        accountId:
-          type: string
-          description: Unique account identifier
-        currentBalance:
-          type: number
-          format: double
-          description: Current ledger balance
-        availableBalance:
-          type: number
-          format: double
-          description: Available balance for transactions
-        pendingBalance:
-          type: number
-          format: double
-          description: Balance of pending transactions
-        currency:
-          type: string
-          default: USD
-          description: Currency code
-        asOfDateTime:
-          type: string
-          format: date-time
-          description: Timestamp of balance information
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        totalCount:
+          type: integer
+          description: Total number of accounts
   securitySchemes:
     OAuth2:
       type: oauth2
