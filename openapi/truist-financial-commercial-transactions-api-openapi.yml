@@ -131,6 +131,19 @@ paths:
           description: Transaction not found
 components:
   schemas:
+    CommercialTransactionListResponse:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommercialTransaction'
+        totalCount:
+          type: integer
+        pageSize:
+          type: integer
+        offset:
+          type: integer
     CommercialTransaction:
       type: object
       properties:
@@ -198,19 +211,6 @@ components:
           type: number
           format: double
           description: Ledger balance after transaction
-    CommercialTransactionListResponse:
-      type: object
-      properties:
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/CommercialTransaction'
-        totalCount:
-          type: integer
-        pageSize:
-          type: integer
-        offset:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2
